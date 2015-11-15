@@ -13,7 +13,7 @@
 				<br />
 			</div>
 		</c:if>
-		<form action="doLogin" method="post">
+		<form action="postLogin" method="post">
 			<fieldset>
 				<legend>Please sign in</legend>
 

@@ -1,19 +1,26 @@
 package com.bitMiners.pdf.domain;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 @Entity
-public class User {
+public class User implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9067986418908847017L;
 	@Id @GeneratedValue
 	private int id;
-	private String userName;
+	private String username;
 	private String password;
 	private String email;
 	
@@ -21,6 +28,12 @@ public class User {
 	
 	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private Profile profile;
+	
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="user")
+	private List<Question> questions;
+	
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="user")
+	private List<Answer> answers;
 	
 	public User(){}
 
@@ -32,12 +45,13 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -70,6 +84,22 @@ public class User {
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 	
 }

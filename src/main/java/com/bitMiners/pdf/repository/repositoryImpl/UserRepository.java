@@ -48,5 +48,11 @@ public class UserRepository implements CrudRepository<User, Integer> {
 		Query query=sessionFactory.getCurrentSession().createQuery("from User");
 		return query.list();
 	}
+	
+	public User getUserByUsername(String username){
+		Query query=sessionFactory.getCurrentSession().createQuery("from User u where u.username=:username");
+		query.setParameter("username", username);
+		return (User) query.uniqueResult();
+	}
 
 }

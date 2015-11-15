@@ -41,6 +41,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/userList.jsp" />
 	</definition>
 	
+	<definition name="addQuestion" extends="baseLayout">
+		<put-attribute name="title" value="Add Question" />
+		<put-attribute name="tagline" value="Questions" />
+		<put-attribute name="body" value="/WEB-INF/views/addQuestionForm.jsp" />
+	</definition>
+	
 	<!-- <definition name="updateUser" extends="baseLayout">
 		<put-attribute name="title" value="Add User" />
  		<put-attribute name="body" value="/WEB-INF/views/userUpdateForm.jsp" />

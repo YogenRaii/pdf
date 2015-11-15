@@ -33,7 +33,7 @@
 
 				<div class="form-group">
 					<input class="form:input-large" placeholder="User Name"
-						name='userName' type="text">
+						name='username' type="text">
 				</div>
 				<div class="form-group">
 					<input class=" form:input-large" placeholder="Password"

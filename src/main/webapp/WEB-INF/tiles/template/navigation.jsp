@@ -7,9 +7,9 @@
 			code="navigation.home.label" /></a></li>
 <li><a href="<spring:url value="/forum/"/>"><spring:message
 			code="navigation.forum.label" /></a></li>
-<security:authorize access="hasRole('ROLE_ADMIN')">
-	<li><a href="<spring:url value="/products/add"/>"><spring:message
-				code="navigation.addproduct.label" /></a></li>
+<security:authorize access="isAuthenticated()">
+	<li><a href="<spring:url value="/questions/add"/>"><spring:message
+				code="navigation.addQuestion.label" /></a></li>
 
 	<li><a href="<spring:url value="/categories/"/>"><spring:message
 				code="navigation.categories.label" /></a></li>

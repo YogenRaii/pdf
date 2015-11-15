@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bitMiners.pdf.domain.Profile;
 import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.service.UserService;
 
@@ -30,7 +31,7 @@ public class UserController {
 	
 	@RequestMapping(value="/users/signup",method=RequestMethod.POST)
 	public String addUser(@ModelAttribute("user") User user,Model model){
-		System.out.println(user.getUserName());
+		user.setProfile(new Profile());
 		user.setDateCreated(new Date());
 		userService.addUser(user);
 		return "redirect:/users/list";

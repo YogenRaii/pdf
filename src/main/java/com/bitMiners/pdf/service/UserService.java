@@ -9,4 +9,8 @@ public interface UserService {
 	Integer addUser(User user);
 
 	List<User> getAllUsers();
+	
+	User getUserByUsername(String username);
+	
+	boolean isCorrectUsernameAndPassword(String username, String password);
 }
