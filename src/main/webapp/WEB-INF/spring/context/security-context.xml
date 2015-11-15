@@ -15,7 +15,7 @@
 	<!--  Use ControllerAdice for Access denied -->	
 <!-- security:http enables security filter mechanism...name space configuration is activated -->
 <!-- use-expressions enables URL level authorization -->
-	<security:http use-expressions="true">
+	<security:http use-expressions="true" auto-config="true">
 	
 	<!-- Need to redirect exception for web authorization -->
 	<security:access-denied-handler error-page="/error-forbidden" />
@@ -29,7 +29,7 @@
 		<!-- similarly username,password,Login-processing  renames j_security_* stuff -->
 		<!-- e.g., /j_spring_security_check is default login-processing-url-->
 <!-- Comment out login-page through logoinfailed for BASIC -->
- 		<security:form-login  login-page="/login" 
+ 		<security:form-login  login-page="/login" login-processing-url="/doLogin" default-target-url="/postLogin"
 		
 				username-parameter="username" 
 				password-parameter="password"
@@ -42,7 +42,7 @@
 	</security:http>
 	
 
-	<security:authentication-manager>
+	<!-- <security:authentication-manager>
 		<security:authentication-provider>
 			<security:password-encoder hash="bcrypt" />
 			<security:jdbc-user-service
@@ -50,16 +50,16 @@
 				users-by-username-query="select username,password,enabled from users where username=?"
 				authorities-by-username-query="select u1.username, u2.authority from users u1, authorities u2 where u1.username = u2.username and u1.username =?" />
 		</security:authentication-provider>
-	</security:authentication-manager>
+	</security:authentication-manager> -->
 
 
-	<!--security:authentication-manager>
+	<security:authentication-manager>
 		<security:authentication-provider>
-			<password-encoder hash="bcrypt" />
+			<!-- <password-encoder hash="bcrypt" /> -->
 			<security:user-service>
 				<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
 				<security:user name="guest" password="guest" authorities="ROLE_USER" />
 			</security:user-service>
 		</security:authentication-provider>
-	</security:authentication-manager-->
+	</security:authentication-manager>
 </beans>

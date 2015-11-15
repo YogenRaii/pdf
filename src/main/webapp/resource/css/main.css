@@ -1,0 +1,156 @@
+.link {
+	cursor: pointer;
+	color: #0000ff;
+}
+
+.dialog {
+	display: none;
+}
+
+.dialogHeader {
+	float: left;
+	width: 94%;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #000;
+	padding-bottom: 6px;
+}
+
+.dialogHeader label {
+	float: left;
+	font-weight: bold;
+}
+
+.dialogHeader .closeDialog {
+	      border: 1px solid;
+    float: right;
+    border-radius: 100%;
+    padding: 3px 7px;
+    color: #333;
+}
+
+.dialogFooter {
+	float: right;
+	margin-bottom: 11px;
+	margin: 0 20px 20px 0;
+}
+
+.dialogBody p {
+	text-align: left;
+	padding-left: 10px;
+}
+
+body {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.nav li {
+	background: #ccc;
+	list-style: none;
+	display: inline-block;
+	padding: 5px 10px;
+}
+
+.nav li:hover {
+	background: #999;
+}
+
+.nav {
+	float: right;
+	padding: 0;
+}
+
+.nav li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav li a:hover {
+	color: #ddffee;
+}
+
+.mainTitle {
+	color: #445566;
+	font-size: 23px;
+}
+.subTitle{
+	color: #445500;
+	font-size: 17px;
+}
+
+.mainContent {
+	min-height: 200px;
+}
+
+.footer {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+}
+
+.footer .language {
+	float: left
+}
+
+.footer .language a {
+	text-decoration: none;
+}
+
+.footer .copyright {
+	float: right;
+}
+
+.item {
+	display: inline-block;
+	width: 200px;
+	border: 1px solid #ccc;
+	padding: 0 15px;
+	margin-right: 10px;
+	border-radius: 10px;
+	margin-bottom:13px;
+}
+
+.item.purchased
+{
+	background-color: #ccc;
+}
+
+.item.purchased .btnPurchase
+{
+	display:none;
+} 
+
+.btn {
+	text-decoration: none;
+	color: #fff;
+	background-color: #666;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor:pointer;
+}
+
+.alert {
+	color: #ff0000;
+}
+
+.logo {
+	width: 60px;
+	margin-top: 15px;
+}
+
+.form-group {
+    margin-bottom: 11px;
+}
+
+.hidden{
+	display:none;
+}
+
+.username
+{
+	float: right;
+    position: relative;
+    top: -45px;
+    color: #445566;
+    font-size: 21px;
+}

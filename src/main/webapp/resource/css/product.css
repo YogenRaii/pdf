@@ -1,0 +1,9 @@
+#result {
+position:absolute;
+    left: 600px;
+    top:  200px;
+background-color:lightgrey;	
+width:300px;
+height:300px;
+z-index: 9002;
+}
