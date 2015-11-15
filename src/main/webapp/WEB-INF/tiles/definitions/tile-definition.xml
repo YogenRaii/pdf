@@ -30,7 +30,7 @@
 	</definition>
 	
 	<definition name="forum" extends="baseLayout">
-		<put-attribute name="title" value="Login" />
+		<put-attribute name="title" value="Forum" />
 		<put-attribute name="tagline" value="Forum" />
 		<put-attribute name="body" value="/WEB-INF/views/forumPage.jsp" />
 	</definition>
@@ -47,11 +47,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/addQuestionForm.jsp" />
 	</definition>
 	
-	<!-- <definition name="updateUser" extends="baseLayout">
-		<put-attribute name="title" value="Add User" />
- 		<put-attribute name="body" value="/WEB-INF/views/userUpdateForm.jsp" />
+	<definition name="wallPage" extends="baseLayout">
+		<put-attribute name="title" value="Profile" />
+ 		<put-attribute name="body" value="/WEB-INF/views/wall-page.jsp" />
 	</definition>
 	
+	
+<!-- 	
 	<definition name="products" extends="baseLayout">
 		<put-attribute name="title" value="Products" />
 		<put-attribute name="tagline" value="Available Products" />
@@ -107,6 +109,6 @@
 	<definition name="productNotFound" extends="baseLayout">
 		<put-attribute name="title" value="Product Exception" />
  		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
-	</definition> -->
+	</definition>  -->
 	 	
 </tiles-definitions>

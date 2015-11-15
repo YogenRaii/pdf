@@ -8,6 +8,7 @@
 	<div class="panel-body">
 		<div class="row">
 			<form action="addQuestion" method="post">
+			Heading: <input type="text" name="heading">
 				Question: <input type="text" name="questionContent"> Type: <input
 					type="text" name="type"> <input type="submit">
 			</form>

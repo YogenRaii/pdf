@@ -16,6 +16,7 @@ public class Question {
 
 	@Id @GeneratedValue
 	private int id;
+	private String heading;
 	private String questionContent;
     private String type;
     private Date dateCreated;
@@ -30,6 +31,16 @@ public class Question {
     public Question(){}
 
     
+	public String getHeading() {
+		return heading;
+	}
+
+
+	public void setHeading(String heading) {
+		this.heading = heading;
+	}
+
+
 	public List<Answer> getAnswers() {
 		return answers;
 	}

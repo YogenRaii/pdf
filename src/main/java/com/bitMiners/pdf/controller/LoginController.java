@@ -51,7 +51,7 @@ public class LoginController {
 		boolean isCorrect = userService.isCorrectUsernameAndPassword(username, password);
 		if (isCorrect) {
 			model.addAttribute("currentUser", username);
-			return "redirect:/welcome";
+			return "redirect:/wallPage";
 		}
 		return "login";
 

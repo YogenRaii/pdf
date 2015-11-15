@@ -1,0 +1,110 @@
+.list-todo{
+    margin-bottom: 10px;
+    background-color: rgba(49, 176, 213, 0.53);
+}
+
+#main-todo-content{
+    padding: 5px;
+}
+
+.todoheader{
+    padding: 10px;
+}
+
+.welcome{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: rgba(26, 75, 213, 0.53);
+}
+
+.welcome h1{
+    float: left;
+}
+
+.logout-btn {
+    float: right;
+    margin-top: 20px;
+}
+
+.deleteimage{
+    display: block;
+    float: right;
+    width: 30px;
+}
+
+.done-or-not{
+    display: inline-block;
+    float: right;
+    margin-right: 80px;
+}
+
+.userinfo{
+    font-size: 10px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.todoimg,.todoimg img{
+    width: 50px;
+    display: block;
+    float: left;
+}
+
+#todo {
+    text-align: center;
+    display: block;
+    padding: 10px;
+}
+
+.comment{
+    float: right;
+}
+
+#comment-textarea{
+    padding: 5px;
+}
+#user-loggedInfo{
+    float: right;
+    position: relative;
+}
+
+.delete-comment-container{
+    background-color: rgba(49, 176, 213, 0.29);
+    border: 2px #00ABFF solid;
+    border-radius: 10px;
+    margin: 10px;
+    /*display: inline;*/
+}
+
+.comment-text{
+    display: inline;
+}
+
+.comment-delete-img{
+    display: inline-block;
+    float: right;
+}
+.comment-image{
+    display: inline;
+}
+.comment-text-main{
+    display: inline-block;
+}
+
+.update-task{
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+}
+.update-comment{
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+}
+
+.update-comment img{
+    width: 20px;
+}
+
+.update-task img{
+    width: 20px;
+}

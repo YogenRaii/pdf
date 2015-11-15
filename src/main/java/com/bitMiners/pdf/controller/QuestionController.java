@@ -30,6 +30,12 @@ public class QuestionController {
 		return "forum";
 	}
 	
+	@RequestMapping("/wallPage")
+	public String getWallPage(Model model){
+		model.addAttribute("questions",questionService.getAllQuestions());
+		return "wallPage";
+	}
+	
 	@RequestMapping(value="/questions/add",method=RequestMethod.GET)
 	public String addQuestion(){
 		return "addQuestion";
