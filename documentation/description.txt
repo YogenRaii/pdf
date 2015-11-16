@@ -1,0 +1,15 @@
+Project Title: Programming Discussion Forum (aka PdF)
+
+Scope: Simple Site where user can signup, ask question and reply answers to the question already being asked.
+
+Features:
+
+All users can visit the home page, see the questions and answers clicking on question. 
+Also they are able to see all the users registered.
+In order to ask question and answer the question that s/he knows, then s/he should logged in.
+Once, the user is logged in, s/he will be able to see all the comments he made, question asked, and do all CRUD operation on them.
+S/he won't be able to do CRUD operation on other's post.
+Admin can add, delete or edit question Type.
+User has profile including image and he can do CRUD operation over profile.
+
+Please look over our class diagram attached within.

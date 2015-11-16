@@ -55,7 +55,7 @@ public class QuestionController {
 		
 		question.setDateCreated(new Date());
 		questionService.save(question);
-		return "redirect:/forum";
+		return "redirect:/wallPage";
 	}
 
 	@RequestMapping(value="/questions/delete/{questionId}",method=RequestMethod.GET)

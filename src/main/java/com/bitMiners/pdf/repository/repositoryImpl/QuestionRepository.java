@@ -31,10 +31,17 @@ public class QuestionRepository implements CrudRepository<Question, Integer> {
 	}
 
 	public boolean update(Question question) {
-		Session session=sessionFactory.getCurrentSession();
+		System.out.println("------"+question.getQuestionContent());
+		
+		/*Session session=sessionFactory.getCurrentSession();
 		Question oldQues=(Question) session.get(Question.class, question.getId());
 		oldQues.setQuestionContent(question.getQuestionContent());
-		session.update(oldQues);
+		session.update(oldQues);*/
+		
+		Query query=sessionFactory.getCurrentSession().createQuery("update Question q set q.questionContent=:content where q.id=:id");
+		query.setParameter("content", question.getQuestionContent());
+		query.setParameter("id", question.getId());
+		query.executeUpdate();
 		return true;
 	}
 

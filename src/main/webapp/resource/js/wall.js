@@ -75,15 +75,16 @@ $(function () {
         var questionId = this.id;
             $('#question').val($("#question-"+questionId).text().trim());
 //            alert(questionId);
-        $( "#dialog-update-question" ).dialog({
-            autoOpen: false,
+        $("#dialog-update-question").dialog({
+//            autoOpen: false,
             height: 300,
             width: 350,
             modal: true,
             buttons: {
                 'OK': function() {
+//                	alert(questionId);
                     var questionText = $('#question').val();
-                    alert(questionText);
+//                    alert(questionText);
                     $.ajax({ url: "questions/edit/"+questionId,
                         data: JSON.stringify({'questionContent':questionText/*,'id':questionId*/}),
                         type: 'post',
