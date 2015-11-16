@@ -31,7 +31,7 @@ public class AnswerController {
 	
 	@RequestMapping(value="/answers/add/{questionId}/{userId}",method=RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Integer addAnswer(@RequestBody  Answer answer,@PathVariable("questionId") int questionId,@PathVariable("userId") int userId){
-		System.out.println(answer.getAnswerContent());
+//		System.out.println(answer.getAnswerContent());
 //		Answer answer=new Answer();
 //		answer.setAnswerContent(ans);
 //		System.out.println("========="+userId);

@@ -49,10 +49,12 @@
 											date="${question.dateCreated}"></g:dateFromNow></span>
 								</div>
 								<div>
-									<div id="question-${question.id}">
+									<div id="heading">
 										<h4>${question.heading}</h4>
-										${question.questionContent}
 									</div>
+									<div id="question-${question.id}">
+
+										${question.questionContent}</div>
 								</div>
 								<div id="comment-textarea-${question.id}">
 									<textarea rows="2" cols="50"></textarea>

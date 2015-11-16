@@ -70,6 +70,42 @@ $(function () {
         });
     });
 
+
+    $(document).on('click','.update-question',function(){
+        var questionId = this.id;
+            $('#question').val($("#question-"+questionId).text().trim());
+//            alert(questionId);
+        $( "#dialog-update-question" ).dialog({
+            autoOpen: false,
+            height: 300,
+            width: 350,
+            modal: true,
+            buttons: {
+                'OK': function() {
+                    var questionText = $('#question').val();
+                    alert(questionText);
+                    $.ajax({ url: "questions/edit/"+questionId,
+                        data: JSON.stringify({'questionContent':questionText/*,'id':questionId*/}),
+                        type: 'post',
+                        dataType: "json",
+                        contentType: "application/json;charset=utf-8",
+                        success: function (output) {
+                            if(output == 1){
+                                $("#dialog-update-question").dialog( "close" );
+                                $("#question-"+questionId).text(questionText);
+                            }
+                        }
+                    });
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+
+        $( "#dialog-update-task" ).dialog( "open" );
+    });
+
     $(document).on('click','.comment-delete-img',function(){
         var commentId = this.id;
         $( "#dialog-confirm-comment" ).dialog({
@@ -96,40 +132,6 @@ $(function () {
                 }
             }
         });
-    });
-
-
-    $(document).on('click','.update-question',function(){
-        var questionId = this.id;
-            $('#question').val($("#question-"+questionId).text().trim());
-//            alert(questionId);
-        $( "#dialog-update-question" ).dialog({
-            autoOpen: false,
-            height: 300,
-            width: 350,
-            modal: true,
-            buttons: {
-                OK: function() {
-                    var questionText = $('#question').val();
-                    $.ajax({ url: "questions/edit/"+questionId,
-                        data: JSON.stringify({'questionContent':questionText/*,'id':questionId*/}),
-                        type: 'post',
-                        dataType: "json",
-                        success: function (output) {
-                            if(output == 1){
-                                $("#dialog-update-question").dialog( "close" );
-                                $("#question-"+questionId).text(questionText);
-                            }
-                        }
-                    });
-                },
-                Cancel: function() {
-                    $( this ).dialog( "close" );
-                }
-            }
-        });
-
-        $( "#dialog-update-task" ).dialog( "open" );
     });
 
         $(document).on('click','.update-comment',function(){
@@ -228,7 +230,7 @@ $(function () {
             '<img src="resource/images/user.png">' +
             '</div>'+
             '<div class="comment-text-main">'+
-            '<div class="userinfo"> Commented by: '+username+'</div>'+
+            '<div class="userinfo"> Answered by: '+username+'</div>'+
             '<div class="comment-text">' + text + '</div>' +
             '</div>'+
             '<div class="comment-delete-img" id="'+commentid+'">' +

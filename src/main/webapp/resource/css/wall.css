@@ -48,7 +48,11 @@
     display: block;
     float: left;
 }
-
+/* #heading{
+	text-align: center;
+    display: block;
+    padding: 10px;
+} */
 #question {
     text-align: center;
     display: block;

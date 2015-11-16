@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -63,7 +64,7 @@ public class QuestionController {
 		return 1;
 	}
 	
-	@RequestMapping(value="/questions/edit/{questionId}",method=RequestMethod.POST)
+	@RequestMapping(value="/questions/edit/{questionId}",method=RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Integer editQuestion(@RequestBody Question question,@PathVariable("questionId") int id){
 		question.setId(id);
 		System.out.println("======================"+id);

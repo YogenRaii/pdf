@@ -58,5 +58,12 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames" value="messages" />
 	</bean>
+	
+	<!-- working with image -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10240000" />
+		<!--property name="restrictFileTypes" value="pdf"/ -->
+	</bean>
 
 </beans>
