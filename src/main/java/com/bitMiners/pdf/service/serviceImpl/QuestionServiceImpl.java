@@ -29,5 +29,9 @@ public class QuestionServiceImpl implements QuestionService {
 		questionRepository.delete(id);
 		
 	}
+	public void updateQuestion(Question question) {
+		questionRepository.update(question);
+		
+	}
 
 }

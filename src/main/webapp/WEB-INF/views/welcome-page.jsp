@@ -9,10 +9,3 @@
 <p><spring:message code="welcome.body"/></p>
 
 
-<%-- <security:authorize access="hasRole('ROLE_ADMIN')">
-	<li><a href="<spring:url value="/users/"/>"><spring:message
-				code="navigation.users.label" /></a></li>
-	<li><a href="<spring:url value="/users/add"/>"><spring:message
-				code="navigation.user.label" /></a></li>
-</security:authorize>
- --%>

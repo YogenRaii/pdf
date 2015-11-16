@@ -65,7 +65,9 @@ public class QuestionController {
 	
 	@RequestMapping(value="/questions/edit/{questionId}",method=RequestMethod.POST)
 	public @ResponseBody Integer editQuestion(@RequestBody Question question,@PathVariable("questionId") int id){
-		questionService.deleteQuestionById(id);
+		question.setId(id);
+		System.out.println("======================"+id);
+		questionService.updateQuestion(question);
 		return 1;
 	}
 }

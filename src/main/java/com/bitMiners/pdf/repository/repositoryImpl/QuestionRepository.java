@@ -30,9 +30,12 @@ public class QuestionRepository implements CrudRepository<Question, Integer> {
 		
 	}
 
-	public boolean update(Question t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Question question) {
+		Session session=sessionFactory.getCurrentSession();
+		Question oldQues=(Question) session.get(Question.class, question.getId());
+		oldQues.setQuestionContent(question.getQuestionContent());
+		session.update(oldQues);
+		return true;
 	}
 
 	public Question findOne(Integer id) {

@@ -45,7 +45,6 @@ $(function () {
 
     $(document).on('click','.deleteimage',function(){
         var questionId = this.id;
-        alert(questionId);
         $( "#dialog-confirm" ).dialog({
             resizable: false,
             height:200,
@@ -103,7 +102,7 @@ $(function () {
     $(document).on('click','.update-question',function(){
         var questionId = this.id;
             $('#question').val($("#question-"+questionId).text().trim());
-
+//            alert(questionId);
         $( "#dialog-update-question" ).dialog({
             autoOpen: false,
             height: 300,
@@ -113,7 +112,7 @@ $(function () {
                 OK: function() {
                     var questionText = $('#question').val();
                     $.ajax({ url: "questions/edit/"+questionId,
-                        data: JSON.stringify({'questionContent':questionText}),
+                        data: JSON.stringify({'questionContent':questionText/*,'id':questionId*/}),
                         type: 'post',
                         dataType: "json",
                         success: function (output) {
