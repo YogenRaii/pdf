@@ -40,4 +40,16 @@ public class AnswerController {
 		answer.setDateCreated(new Date());
 		return answerService.saveAnswer(answer);
 	}
+	
+	@RequestMapping(value="/answers/delete/{answerId}",method=RequestMethod.GET)
+	public @ResponseBody Integer deleteAnswer(@PathVariable("answerId") int id){
+		answerService.deleteAnswer(id);
+		return 1;
+	}
+	
+	@RequestMapping(value="/answers/edit/{answerId}",method=RequestMethod.POST)
+	public @ResponseBody Integer updateAnswer(@RequestBody Answer answer,@PathVariable("answerId") int id){
+		answer.setId(id);
+		return answerService.updateAnswer(answer);
+	}
 }

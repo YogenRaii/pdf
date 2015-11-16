@@ -2,6 +2,7 @@ package com.bitMiners.pdf.repository.repositoryImpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,13 +21,17 @@ public class AnswerRepository implements CrudRepository<Answer, Integer> {
 	}
 
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		Query query=sessionFactory.getCurrentSession().createQuery("delete from Answer a where a.id=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
 	}
 
-	public boolean update(Answer t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Answer answer) {
+		Query query=sessionFactory.getCurrentSession().createQuery("update Answer a set a.answerContent=:content where a.id=:id");
+		query.setParameter("content", answer.getAnswerContent());
+		query.setParameter("id", answer.getId());
+		query.executeUpdate();
+		return true;
 	}
 
 	public Answer findOne(Integer id) {

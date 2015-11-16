@@ -104,6 +104,7 @@ span{
     float: right;
     margin-right: 5px;
 }
+
 .update-comment{
     display: inline-block;
     float: right;
@@ -111,7 +112,7 @@ span{
 }
 
 .update-comment img{
-    width: 2px;
+    width: 20px;
 }
 
 .update-question img{

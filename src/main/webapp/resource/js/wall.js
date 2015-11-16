@@ -3,28 +3,6 @@ $(function () {
     var userId = $("#user_id").val();
     var username = $("#username").val();
 
-   /* $('.add-todo').on('keypress', function (e) {
-        //e.preventDefault
-        if (e.which == 13) {
-            if ($(this).val() != '') {
-                var todo = $(this).val();
-                var act = 'addTodoTask';
-                $.ajax({ url: baseUrl + "controller/todo.php",
-                	url:"/answers/add",
-                    data: {action: act, text: todo, uid: userId},
-                    type: 'post',
-                    dataType: "json",
-                    success: function (output) {
-                        var itemId = output;
-                        createTodo(todo, userId, username, itemId);
-                    }
-                });
-            } else {
-                alert("Please write something in todo box");
-            }
-        }
-    });*/
-
     $(document).on('click','.comment-btn',function(){
         var questionId = this.id;
         if ($("#comment-textarea-"+questionId+" textarea").val() != '') {
@@ -115,9 +93,8 @@ $(function () {
             modal: true,
             buttons: {
                 "Delete": function() {
-                    $.ajax({ url: baseUrl + 'controller/todo.php',
-                        data: {action: 'deleteComment', commentid: commentId},
-                        type: 'post',
+                    $.ajax({ url: 'answers/delete/'+commentId,
+                        type: 'get',
                         dataType: "json",
                         success: function (output) {
                             if(output == 1){
@@ -137,24 +114,25 @@ $(function () {
 
         $(document).on('click','.update-comment',function(){
             var commentId = this.id;
-            $('#comment').val($("#comment-text-"+commentId).text().trim());
+            $('#answer').val($("#comment-text-"+commentId).text().trim());
 
             $( "#dialog-update-comment" ).dialog({
-                autoOpen: false,
+//                autoOpen: false,
                 height: 300,
                 width: 350,
                 modal: true,
                 buttons: {
                     OK: function() {
-                        var commentText = $('#comment').val();
-                        $.ajax({ url: baseUrl + 'controller/todo.php',
-                            data: {action: 'updateComment', commentid: commentId, comment:commentText},
+                        var answerText = $('#answer').val();
+                        $.ajax({ url: "answers/edit/"+commentId,
+                            data: JSON.stringify({'answerContent':answerText}),
                             type: 'post',
                             dataType: "json",
+                            contentType: "application/json;charset=utf-8",
                             success: function (output) {
                                 if(output == 1){
                                     $("#dialog-update-comment").dialog( "close" );
-                                    $("#comment-text-"+commentId).text(commentText);
+                                    $("#comment-text-"+commentId).text(answerText);
                                 }
                             }
                         });
@@ -168,71 +146,15 @@ $(function () {
         $( "#dialog-update-comment" ).dialog( "open" );
      });
 
-    $(document).on('click','.done-or-not',function(){
-        var itemid = $(this).find('input')[0].id;
-
-        if($(this).find('input').prop('checked') == true){
-        $( "#dialog-confirm-done" ).dialog({
-            resizable: false,
-            height:200,
-            modal: true,
-            buttons: {
-                "Done": function() {
-                    $.ajax({ url: baseUrl + 'controller/todo.php',
-                        data: {action: 'doneTask', itemid: itemid},
-                        type: 'post',
-                        dataType: "json",
-                        success: function (output) {
-                            if(output == 1){
-                                $("#dialog-confirm-done").dialog( "close" );
-
-                                $("#main-todo-content-"+itemid).hide("slow");
-                            }
-                        }
-                    });
-                },
-                Cancel: function() {
-                    $( this ).dialog( "close" );
-                    $('.done-or-not').find('input').attr('checked', false);
-                }
-            }
-        });
-        }
-    });
-
-    function createTodo(text, uid, uname, itemid) {
-        var markup = '<li class="list-todo">' +
-            '<div id="main-todo-content-'+itemid+'">' +
-            '<div class="todoheader">'+
-            '<div class="deleteimage" id="'+itemid+'">'+
-                '<img src="images/delete.png">'+
-               '</div>'+
-            '<div class="update-task" id="'+itemid+'"><img src="images/edit.png"></div>'+
-                '<div class="done-or-not"><label><input type="checkbox" value="0" id="'+itemid+'">Done</label></div>'+
-                '<div class="todoimg" ><img src="images/todo.png" /></div>'+
-            '<div class="userinfo"> Task added by: '+uname+'</div><div>'+
-                '<div id="todo-'+itemid+'">' +
-                        text +
-            '</div></div>'+
-            '<div id="comment-textarea-'+itemid+'"><textarea rows="5" cols="50"></textarea></div>' +
-            '<div><button class="comment-btn btn-sm btn-success" id="'+itemid+'">Comment</button></div>'+
-            '<div id="comments-'+itemid+'"></div>'+
-        '</div></li>';
-
-        $(".no-task").css("display","none");
-
-        $('#sortable').append(markup);
-        $('.add-todo').val('');
-    }
-
     function createComment(text, itemid, commentid) {
         var comment = '<div class="delete-comment-container" id="delete-comment-'+commentid+'">' +
             '<div class="comment-image">'+
             '<img src="resource/images/user.png">' +
             '</div>'+
             '<div class="comment-text-main">'+
-            '<div class="userinfo"> Answered by: '+username+'</div>'+
+            
             '<div class="comment-text">' + text + '</div>' +
+            '<div class="userinfo"> Answered by: '+username+'</div>'+
             '</div>'+
             '<div class="comment-delete-img" id="'+commentid+'">' +
             '<img src="resource/images/delete.png">' +

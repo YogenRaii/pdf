@@ -16,4 +16,13 @@ public class AnswerServiceImpl implements AnswerService {
 		return answerRepository.add(answer);
 	}
 
+	public Integer updateAnswer(Answer answer) {
+		return (answerRepository.update(answer))? 1:0;
+	}
+
+	public void deleteAnswer(int id) {
+		answerRepository.delete(id);
+		
+	}
+
 }
