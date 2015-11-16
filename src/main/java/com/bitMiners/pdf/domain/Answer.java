@@ -2,7 +2,9 @@ package com.bitMiners.pdf.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,11 +23,21 @@ public class Answer {
     @JoinColumn(name="user_id")
     private User user;
     
+    @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    @JoinColumn(name="question_id")
+    private Question question;
+    
     public Answer(){}
 	public int getId() {
 		return id;
 	}
 
+	public Question getQuestion() {
+		return question;
+	}
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}

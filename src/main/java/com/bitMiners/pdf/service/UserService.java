@@ -12,5 +12,7 @@ public interface UserService {
 	
 	User getUserByUsername(String username);
 	
+	User getUserById(int id);
+	
 	boolean isCorrectUsernameAndPassword(String username, String password);
 }

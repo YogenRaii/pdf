@@ -38,9 +38,9 @@
 }
 
 .userinfo{
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .todoimg,.todoimg img{
@@ -49,10 +49,15 @@
     float: left;
 }
 
-#todo {
+#question {
     text-align: center;
     display: block;
     padding: 10px;
+}
+
+span{
+	font-style: italic;
+	font-weight: lighter;
 }
 
 .comment{
@@ -90,7 +95,7 @@
     display: inline-block;
 }
 
-.update-task{
+.update-question{
     display: inline-block;
     float: right;
     margin-right: 5px;
@@ -102,9 +107,9 @@
 }
 
 .update-comment img{
-    width: 20px;
+    width: 2px;
 }
 
-.update-task img{
+.update-question img{
     width: 20px;
 }

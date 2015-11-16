@@ -33,7 +33,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/rajkumar/.m2/repository/javax/javaee-web-api/6.0/javaee-web-api-6.0.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/rajkumar/.m2/repository/javax/javaee-web-api/6.0/javaee-web-api-6.0.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="javax"/>

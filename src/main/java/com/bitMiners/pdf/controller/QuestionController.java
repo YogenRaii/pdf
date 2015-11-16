@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitMiners.pdf.domain.Question;
 import com.bitMiners.pdf.service.QuestionService;
@@ -54,4 +57,15 @@ public class QuestionController {
 		return "redirect:/forum";
 	}
 
+	@RequestMapping(value="/questions/delete/{questionId}",method=RequestMethod.GET)
+	public @ResponseBody Integer deleteQuestion(@PathVariable("questionId") int id){
+		questionService.deleteQuestionById(id);
+		return 1;
+	}
+	
+	@RequestMapping(value="/questions/edit/{questionId}",method=RequestMethod.POST)
+	public @ResponseBody Integer editQuestion(@RequestBody Question question,@PathVariable("questionId") int id){
+		questionService.deleteQuestionById(id);
+		return 1;
+	}
 }

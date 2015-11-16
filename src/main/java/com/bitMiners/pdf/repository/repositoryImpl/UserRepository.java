@@ -39,8 +39,7 @@ public class UserRepository implements CrudRepository<User, Integer> {
 	}
 
 	public User findOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (User) sessionFactory.getCurrentSession().get(User.class, id);
 	}
 
 	@SuppressWarnings("unchecked")

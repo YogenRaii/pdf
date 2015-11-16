@@ -24,7 +24,9 @@ public class QuestionRepository implements CrudRepository<Question, Integer> {
 	}
 
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		Query query=sessionFactory.getCurrentSession().createQuery("delete from Question q where q.id=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
 		
 	}
 
@@ -34,8 +36,7 @@ public class QuestionRepository implements CrudRepository<Question, Integer> {
 	}
 
 	public Question findOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Question) sessionFactory.getCurrentSession().get(Question.class, id);
 	}
 
 	@SuppressWarnings("unchecked")

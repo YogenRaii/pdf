@@ -3,13 +3,14 @@ $(function () {
     var userId = $("#user_id").val();
     var username = $("#username").val();
 
-    $('.add-todo').on('keypress', function (e) {
+   /* $('.add-todo').on('keypress', function (e) {
         //e.preventDefault
         if (e.which == 13) {
             if ($(this).val() != '') {
                 var todo = $(this).val();
                 var act = 'addTodoTask';
                 $.ajax({ url: baseUrl + "controller/todo.php",
+                	url:"/answers/add",
                     data: {action: act, text: todo, uid: userId},
                     type: 'post',
                     dataType: "json",
@@ -22,20 +23,19 @@ $(function () {
                 alert("Please write something in todo box");
             }
         }
-    });
+    });*/
 
     $(document).on('click','.comment-btn',function(){
-        var itemId = this.id;
-
-        if ($("#comment-textarea-"+itemId+" textarea").val() != '') {
-            var comment = $("#comment-textarea-"+itemId+" textarea").val();
-
-            $.ajax({ url: baseUrl + 'controller/todo.php',
-                data: {action: 'addComment', text: comment, userid: userId, itemid: itemId},
-                type: 'post',
-                dataType: "json",
+        var questionId = this.id;
+        if ($("#comment-textarea-"+questionId+" textarea").val() != '') {
+            var comment = $("#comment-textarea-"+questionId+" textarea").val();
+            $.ajax({ url: "answers/add/"+questionId+"/"+userId,
+                data: JSON.stringify({'answerContent': comment}),
+                type: 'POST',
+                dataType : 'json',
+                contentType: "application/json;charset=utf-8",
                 success: function (output) {
-                    createComment(comment, itemId, output);
+                    createComment(comment, questionId, output);
                 }
             });
         } else {
@@ -44,21 +44,21 @@ $(function () {
     });
 
     $(document).on('click','.deleteimage',function(){
-        var delId = this.id;
+        var questionId = this.id;
+        alert(questionId);
         $( "#dialog-confirm" ).dialog({
             resizable: false,
             height:200,
             modal: true,
             buttons: {
                 "Delete": function() {
-                    $.ajax({ url: baseUrl + 'controller/todo.php',
-                        data: {action: 'deleteTodoTask', itemid: delId},
-                        type: 'post',
+                    $.ajax({ url: "questions/delete/"+questionId,
+                        type: 'GET',
                         dataType: "json",
                         success: function (output) {
                             if(output == 1){
                                 $("#dialog-confirm").dialog( "close" );
-                                $("#main-todo-content-"+delId).parent().remove();
+                                $("#main-todo-content-"+questionId).parent().remove();
                             }
                         }
                     });
@@ -100,26 +100,26 @@ $(function () {
     });
 
 
-    $(document).on('click','.update-task',function(){
-        var itemId = this.id;
-            $('#task').val($("#todo-"+itemId).text().trim());
+    $(document).on('click','.update-question',function(){
+        var questionId = this.id;
+            $('#question').val($("#question-"+questionId).text().trim());
 
-        $( "#dialog-update-task" ).dialog({
+        $( "#dialog-update-question" ).dialog({
             autoOpen: false,
             height: 300,
             width: 350,
             modal: true,
             buttons: {
                 OK: function() {
-                    var taskText = $('#task').val();
-                    $.ajax({ url: baseUrl + 'controller/todo.php',
-                        data: {action: 'updateTask', itemid: itemId, text:taskText},
+                    var questionText = $('#question').val();
+                    $.ajax({ url: "questions/edit/"+questionId,
+                        data: JSON.stringify({'questionContent':questionText}),
                         type: 'post',
                         dataType: "json",
                         success: function (output) {
                             if(output == 1){
-                                $("#dialog-update-task").dialog( "close" );
-                                $("#todo-"+itemId).text(taskText);
+                                $("#dialog-update-question").dialog( "close" );
+                                $("#question-"+questionId).text(questionText);
                             }
                         }
                     });
@@ -226,16 +226,16 @@ $(function () {
     function createComment(text, itemid, commentid) {
         var comment = '<div class="delete-comment-container" id="delete-comment-'+commentid+'">' +
             '<div class="comment-image">'+
-            '<img src="images/user.png">' +
+            '<img src="resource/images/user.png">' +
             '</div>'+
             '<div class="comment-text-main">'+
             '<div class="userinfo"> Commented by: '+username+'</div>'+
             '<div class="comment-text">' + text + '</div>' +
             '</div>'+
             '<div class="comment-delete-img" id="'+commentid+'">' +
-            '<img src="images/delete.png">' +
+            '<img src="resource/images/delete.png">' +
             '</div>' +
-            '<div class="update-comment" id="'+commentid+'"><img src="images/edit.png"></div>'+
+            '<div class="update-question" id="'+commentid+'"><img src="resource/images/edit.png"></div>'+
             '</div>';
         $("#comments-"+itemid).append(comment);
         $("#comment-textarea-"+itemid+" textarea").val('');

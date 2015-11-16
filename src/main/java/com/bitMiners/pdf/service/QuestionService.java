@@ -8,4 +8,7 @@ public interface QuestionService {
 
 	Integer save(Question question);
 	List<Question> getAllQuestions();
+	Question getQuestionById(int id);
+	
+	void deleteQuestionById(int id);
 }

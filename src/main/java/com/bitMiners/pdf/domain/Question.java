@@ -21,7 +21,7 @@ public class Question {
     private String type;
     private Date dateCreated;
     
-    @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="question")
     private List<Answer> answers;
     
     @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)

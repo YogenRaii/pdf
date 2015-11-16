@@ -22,5 +22,12 @@ public class QuestionServiceImpl implements QuestionService {
 	public Integer save(Question question) {
 		return questionRepository.add(question);
 	}
+	public Question getQuestionById(int id) {
+		return questionRepository.findOne(id);
+	}
+	public void deleteQuestionById(int id) {
+		questionRepository.delete(id);
+		
+	}
 
 }
