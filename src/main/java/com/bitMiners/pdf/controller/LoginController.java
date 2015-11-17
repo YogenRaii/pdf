@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.bitMiners.pdf.service.UserService;
 
-@SessionAttributes("currentUser")
+@SessionAttributes({"currentUser","currentUserId"})
 @Controller
 public class LoginController {
 
@@ -50,6 +50,7 @@ public class LoginController {
 
 		boolean isCorrect = userService.isCorrectUsernameAndPassword(username, password);
 		if (isCorrect) {
+			model.addAttribute("currentUserId", userService.getUserByUsername(username).getId());
 			model.addAttribute("currentUser", username);
 			return "redirect:/wallPage";
 		}

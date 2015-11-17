@@ -58,6 +58,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/questionTypesPage.jsp" />
 	</definition>
 	
+	<definition name="profile" extends="baseLayout">
+		<put-attribute name="title" value="Profile" />
+		<put-attribute name="tagline" value="User Profile" />
+		<put-attribute name="body" value="/WEB-INF/views/profilePage.jsp" />
+	</definition>
+	
 	<definition name="addQuestionType" extends="baseLayout">
 		<put-attribute name="title" value="Add Question Types" />
 		<put-attribute name="tagline" value="Questions Categories" />

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.bitMiners.pdf.domain.Profile;
-import com.bitMiners.pdf.repository.repositoryImpl.ProfileRepository;
+import com.bitMiners.pdf.repository.ProfileRepository;
 import com.bitMiners.pdf.service.ProfileService;
 @Service
 @Transactional

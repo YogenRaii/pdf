@@ -10,7 +10,12 @@
 			code="navigation.forum.label" /></a></li>
 <li><a href="<spring:url value="/users/"/>"><spring:message
 			code="navigation.users.label" /></a></li>
-			
+
+<security:authorize access="isAuthenticated()">
+	<li><a href="<spring:url value="/profile/${currentUserId}"/>"><spring:message
+				code="navigation.Profile.label" /></a></li>
+</security:authorize>
+
 <security:authorize access="hasRole('general')">
 	<li><a href="<spring:url value="/questions/add"/>"><spring:message
 				code="navigation.addQuestion.label" /></a></li>
