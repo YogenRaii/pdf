@@ -12,31 +12,23 @@
 				<br />
 			</div>
 		</c:if>
-		<form:form modelAttribute="question" action="addQuestion"
+		<form:form modelAttribute="questionType" action="addQuestionType"
 			method="post">
 			<fieldset>
-				<legend> Add Question </legend>
+				<legend> Add Question Type </legend>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div" />
 
 				<div class="form-group">
-					<p>Question heading</p>
+					<p>Question Type Name</p>
 					<input style="width: 525px;"  class=" form:input-large"
-						placeholder="Enter heading here . . ." name='heading' type="text"
+						placeholder="Enter heading here . . ." name='name' type="text"
 						value="">
 				</div>
 				<div class="form-group">
-					<p>Question</p>
+					<p>Question Type Description</p>
 					<textarea rows="6" cols="70"  class="form:input-large"
-						placeholder="Write question here . . ." name='questionContent'></textarea>
-				</div>
-				<div class="form-group">
-					<p>Choose Question Type</p>
-					<form:select id="category" path="questionType.id">
-						<form:option value="0" label="--Select Question Type" />
-						<form:options items="${questionTypes}" itemLabel="name"
-							itemValue="id" />
-					</form:select>
+						placeholder="Write question here . . ." name='description'></textarea>
 				</div>
 
 				<input class="btn" type="submit" value="Submit">

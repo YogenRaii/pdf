@@ -18,7 +18,6 @@ public class Question {
 	private int id;
 	private String heading;
 	private String questionContent;
-    private String type;
     private Date dateCreated;
     
     @ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
@@ -80,15 +79,7 @@ public class Question {
 	public void setQuestionContent(String questionContent) {
 		this.questionContent = questionContent;
 	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	
 	public Date getDateCreated() {
 		return dateCreated;
 	}

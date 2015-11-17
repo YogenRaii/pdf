@@ -35,12 +35,12 @@
 								<div class="update-question" id="${question.id}">
 									<img src="<c:url value="/resource/images/edit.png" />">
 								</div>
-
+<%-- 
 								<div class="done-or-not">
 									<label><input type="checkbox" value="0"
 										id="${question.id}">Done</label>
 								</div>
-
+ --%>
 								<div class="todoimg">
 									<img src="<c:url value="/resource/images/todo.png" />" />
 								</div>
@@ -98,7 +98,7 @@
 								</div>
 								<div>
 									<button class="comment-btn btn-sm btn-success"
-										id="${question.id}">Comment</button>
+										id="${question.id}">Submit Answer</button>
 								</div>
 
 							</div>

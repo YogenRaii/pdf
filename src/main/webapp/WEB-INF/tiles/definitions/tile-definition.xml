@@ -52,6 +52,17 @@
  		<put-attribute name="body" value="/WEB-INF/views/wall-page.jsp" />
 	</definition>
 	
+	<definition name="questionTypes" extends="baseLayout">
+		<put-attribute name="title" value="Question Types" />
+		<put-attribute name="tagline" value="Questions Categories" />
+		<put-attribute name="body" value="/WEB-INF/views/questionTypesPage.jsp" />
+	</definition>
+	
+	<definition name="addQuestionType" extends="baseLayout">
+		<put-attribute name="title" value="Add Question Types" />
+		<put-attribute name="tagline" value="Questions Categories" />
+		<put-attribute name="body" value="/WEB-INF/views/questionTypesForm.jsp" />
+	</definition>
 	
 <!-- 	
 	<definition name="products" extends="baseLayout">

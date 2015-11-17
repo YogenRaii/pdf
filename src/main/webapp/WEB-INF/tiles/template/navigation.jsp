@@ -10,11 +10,12 @@
 			code="navigation.forum.label" /></a></li>
 <li><a href="<spring:url value="/users/"/>"><spring:message
 			code="navigation.users.label" /></a></li>
-<security:authorize access="hasRole('regular')">
+			
+<security:authorize access="hasRole('general')">
 	<li><a href="<spring:url value="/questions/add"/>"><spring:message
 				code="navigation.addQuestion.label" /></a></li>
 
-	<li><a href="<spring:url value="/categories"/>"><spring:message
+	<li><a href="<spring:url value="/questionTypes"/>"><spring:message
 				code="navigation.types.label" /></a></li>
 </security:authorize>
 
