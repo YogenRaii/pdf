@@ -5,6 +5,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Profile {
@@ -15,6 +19,10 @@ public class Profile {
 	private String address;
 	private String occupation;
 	private String gender;
+	private String portrait;
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
 	
 	public Profile(){}
@@ -73,6 +81,21 @@ public class Profile {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	
+	public String getPortrait() {
+		return portrait;
+	}
+
+	public void setPortrait(String portrait) {
+		this.portrait = portrait;
+	}
+
+	@Override
+	public String toString() {
+		return "Profile [getId()=" + getId() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+				+ ", getAddress()=" + getAddress() + ", getOccupation()=" + getOccupation() + ", getGender()="
+				+ getGender() + ", getDateOfBirth()=" + getDateOfBirth() + "]";
 	}
 	
 
