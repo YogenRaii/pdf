@@ -25,16 +25,40 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/users/signupForm",method=RequestMethod.GET)
-	public String addUser(@ModelAttribute("user") User user){
+	public String addUser(@ModelAttribute("user") User user,Model model){
+		model.addAttribute("url", "signup");
 		return "addUser";
 	}
 	
 	@RequestMapping(value="/users/signup",method=RequestMethod.POST)
-	public String addUser(@ModelAttribute("user") User user,Model model){
+	public String addUser(@ModelAttribute("user") User user){
 		user.setProfile(new Profile());
 		user.setDateCreated(new Date());
+		user.setRole("regular");
 		userService.addUser(user);
 		return "redirect:/users/list";
+	}
+	
+	@RequestMapping(value="/users/addAdminForm",method=RequestMethod.GET)
+	public String addAdmin(@ModelAttribute("user") User user,Model model){
+		model.addAttribute("admin", "admin");
+		model.addAttribute("url","addAdmin");
+		return "addUser";
+	}
+	
+	@RequestMapping(value="/users/addAdmin",method=RequestMethod.POST)
+	public String addAdmin(@ModelAttribute("user") User user){
+		user.setProfile(new Profile());
+		user.setDateCreated(new Date());
+		user.setRole("admin");
+		userService.addUser(user);
+		return "redirect:/users/adminList";
+	}
+	
+	@RequestMapping(value="/users/adminList",method=RequestMethod.GET)
+	public String getAllAdmins(Model model){
+		model.addAttribute("userList", userService.getAllAdmins());
+		return "allUsers";
 	}
 	
 }

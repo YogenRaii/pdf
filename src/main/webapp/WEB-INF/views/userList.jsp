@@ -17,7 +17,7 @@
 			<div class="item" style="padding-bottom: 15px">
 				<div class="thumbnail">
 					<div class="caption">
-						<h3>${user.username} ${user.password}</h3>
+						<h3>${user.username}</h3>
 						<p>ID: ${user.email }</p>
 						<%-- <p>${product.description}</p> --%>
 						<p>

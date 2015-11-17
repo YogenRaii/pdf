@@ -1,4 +1,4 @@
-package com.bitMiners.pdf.repository;
+package com.bitMiners.pdf.baseRepository;
 
 import java.util.List;
 

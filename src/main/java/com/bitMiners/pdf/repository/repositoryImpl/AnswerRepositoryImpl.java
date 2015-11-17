@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bitMiners.pdf.domain.Answer;
-import com.bitMiners.pdf.repository.CrudRepository;
+import com.bitMiners.pdf.repository.AnswerRepository;
 
 @Repository
-public class AnswerRepository implements CrudRepository<Answer, Integer> {
+public class AnswerRepositoryImpl implements AnswerRepository {
 
 	@Autowired
 	private SessionFactory sessionFactory;

@@ -3,18 +3,16 @@ package com.bitMiners.pdf.repository.repositoryImpl;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bitMiners.pdf.domain.User;
-import com.bitMiners.pdf.repository.CrudRepository;
+import com.bitMiners.pdf.repository.UserRepository;
 @Repository
-//@Transactional
-public class UserRepository implements CrudRepository<User, Integer> {
+@Transactional
+public class UserRepositoryImpl implements UserRepository {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -52,6 +50,13 @@ public class UserRepository implements CrudRepository<User, Integer> {
 		Query query=sessionFactory.getCurrentSession().createQuery("from User u where u.username=:username");
 		query.setParameter("username", username);
 		return (User) query.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<User> getAllAdmins() {
+		Query query=sessionFactory.getCurrentSession().createQuery("from User u where u.role=:role");
+		query.setParameter("role", "admin");
+		return query.list();
 	}
 
 }

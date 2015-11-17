@@ -13,6 +13,6 @@ public interface UserService {
 	User getUserByUsername(String username);
 	
 	User getUserById(int id);
-	
+	List<User> getAllAdmins();
 	boolean isCorrectUsernameAndPassword(String username, String password);
 }

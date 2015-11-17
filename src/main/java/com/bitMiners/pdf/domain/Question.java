@@ -21,6 +21,10 @@ public class Question {
     private String type;
     private Date dateCreated;
     
+    @ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
+    @JoinColumn(name="questionType_id")
+    private QuestionType questionType;
+    
     @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="question")
     private List<Answer> answers;
     
@@ -38,6 +42,16 @@ public class Question {
 
 	public void setHeading(String heading) {
 		this.heading = heading;
+	}
+
+
+	public QuestionType getQuestionType() {
+		return questionType;
+	}
+
+
+	public void setQuestionType(QuestionType questionType) {
+		this.questionType = questionType;
 	}
 
 

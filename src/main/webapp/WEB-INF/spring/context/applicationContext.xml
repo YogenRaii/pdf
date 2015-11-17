@@ -33,6 +33,7 @@
 				<value>com.bitMiners.pdf.domain.Question</value>
 				<value>com.bitMiners.pdf.domain.Profile</value>
 				<value>com.bitMiners.pdf.domain.User</value>
+				<value>com.bitMiners.pdf.domain.QuestionType</value>
 			</list>
 		</property>
 	</bean>
@@ -44,6 +45,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="connection.pool.size">1</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.import_files">populate.sql</prop>
 				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
 			</props>
 		</property>

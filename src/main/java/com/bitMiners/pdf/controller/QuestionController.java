@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitMiners.pdf.domain.Question;
 import com.bitMiners.pdf.service.QuestionService;
+import com.bitMiners.pdf.service.QuestionTypeService;
 import com.bitMiners.pdf.service.UserService;
 
 @Controller
@@ -27,6 +29,9 @@ public class QuestionController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private QuestionTypeService questionTypeService;
 	
 	@RequestMapping("/forum")
 	public String questionList(Model model){
@@ -41,12 +46,13 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/questions/add",method=RequestMethod.GET)
-	public String addQuestion(){
+	public String addQuestion(@ModelAttribute("question") Question question,Model model){
+		model.addAttribute("questionTypes", questionTypeService.getAllQuestionTypes());
 		return "addQuestion";
 	}
 	
 	@RequestMapping(value="/questions/addQuestion",method=RequestMethod.POST)
-	public String addQuestion(Question question,/*Model model*/HttpSession session){
+	public String addQuestion(@ModelAttribute("question") Question question,/*Model model*/HttpSession session){
 //		String currentUsername=(String)((ModelMap) model).get("currentUser");
 		
 		String currentUsername=(String) session.getAttribute("currentUser");

@@ -3,12 +3,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="js/login.js" type="text/javascript"></script>
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/login.js" type="text/javascript"></script>
 
-	<%-- <h1>Sign Up</h1>
+<%-- <h1>Sign Up</h1>
 	<form:form modelAttribute="user" action="signup" method="post">
 	<form:input path="userName"/>
 	<form:input path="password"/>
@@ -25,9 +27,14 @@
 				<br />
 			</div>
 		</c:if>
-		<form:form modelAttribute="user" action="signup" method="post">
+		<form:form modelAttribute="user" action="${url}" method="post">
 			<fieldset>
-				<legend>Sign Up</legend>
+				<legend>
+					<c:choose>
+						<c:when test="${not empty admin}">Add Admin</c:when>
+						<c:otherwise>Sign Up</c:otherwise>
+					</c:choose>
+				</legend>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div" />
 
@@ -39,13 +46,12 @@
 					<input class=" form:input-large" placeholder="Password"
 						name='password' type="password" value="">
 				</div>
-				
+
 				<div class="form-group">
-					<input class=" form:input-large" placeholder="Email"
-						name='email' type="text" value="">
+					<input class=" form:input-large" placeholder="Email" name='email'
+						type="text" value="">
 				</div>
-				<input class="btn" type="submit"
-					value="Register Now">
+				<input class="btn" type="submit" value="Register Now">
 			</fieldset>
 		</form:form>
 	</div>

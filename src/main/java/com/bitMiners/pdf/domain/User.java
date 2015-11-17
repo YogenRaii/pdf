@@ -26,6 +26,8 @@ public class User implements Serializable {
 	
 	private Date dateCreated;
 	
+	private String role;
+	
 	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private Profile profile;
 	
@@ -45,7 +47,14 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getUsername() {
 		return username;
 	}

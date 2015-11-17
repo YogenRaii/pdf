@@ -2,14 +2,15 @@
 
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-
-<li><a href="<spring:url value="/"/>"><spring:message
-			code="navigation.home.label" /></a></li>
+<security:authorize access="isAnonymous()">
+	<li><a href="<spring:url value="/"/>"><spring:message
+				code="navigation.home.label" /></a></li>
+</security:authorize>
 <li><a href="<spring:url value="/forum/"/>"><spring:message
 			code="navigation.forum.label" /></a></li>
 <li><a href="<spring:url value="/users/"/>"><spring:message
 			code="navigation.users.label" /></a></li>
-<security:authorize access="isAuthenticated()">
+<security:authorize access="hasRole('regular')">
 	<li><a href="<spring:url value="/questions/add"/>"><spring:message
 				code="navigation.addQuestion.label" /></a></li>
 
@@ -17,10 +18,15 @@
 				code="navigation.types.label" /></a></li>
 </security:authorize>
 
-<security:authorize access="hasRole('ROLE_ADMIN')">
+<security:authorize access="hasRole('admin')">
 
-	<li><a href="<spring:url value="/users/add"/>"><spring:message
-				code="navigation.user.label" /></a></li>
+	<li><a href="<spring:url value="/questionTypes/add"/>"><spring:message
+				code="navigation.questionType.label" /></a></li>
+	<li><a href="<spring:url value="/users/adminList"/>"><spring:message
+				code="navigation.allAdmins.label" /></a></li>
+
+	<li><a href="<spring:url value="/users/addAdminForm"/>"><spring:message
+				code="navigation.addAdmin.label" /></a></li>
 </security:authorize>
 
 <security:authorize access="isAuthenticated()">
@@ -31,7 +37,6 @@
 <security:authorize access="isAnonymous()">
 	<li><a href="<spring:url value="/users/signupForm"/>"><spring:message
 				code="navigation.signup.label" /></a></li>
-
 </security:authorize>
 
 <security:authorize access="isAnonymous()">

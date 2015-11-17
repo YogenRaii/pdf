@@ -10,7 +10,7 @@ public class QuestionType {
 	@GeneratedValue
 	private int id;
 	
-	private String questionType;
+	private String name;
 	
 	private String description;
 	
@@ -24,12 +24,12 @@ public class QuestionType {
 		this.id = id;
 	}
 
-	public String getQuestionType() {
-		return questionType;
+	public String getName() {
+		return name;
 	}
 
-	public void setQuestionType(String questionType) {
-		this.questionType = questionType;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {

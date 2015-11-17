@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitMiners.pdf.domain.Answer;
-import com.bitMiners.pdf.repository.repositoryImpl.AnswerRepository;
+import com.bitMiners.pdf.repository.AnswerRepository;
 import com.bitMiners.pdf.service.AnswerService;
 @Service
 public class AnswerServiceImpl implements AnswerService {

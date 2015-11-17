@@ -3,18 +3,16 @@ package com.bitMiners.pdf.repository.repositoryImpl;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bitMiners.pdf.domain.Question;
-import com.bitMiners.pdf.repository.CrudRepository;
+import com.bitMiners.pdf.repository.QuestionRepository;
 @Repository
-//@Transactional
-public class QuestionRepository implements CrudRepository<Question, Integer> {
+@Transactional
+public class QuestionRepositoryImpl implements QuestionRepository {
 
 	@Autowired
 	private SessionFactory sessionFactory;
