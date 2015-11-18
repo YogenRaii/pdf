@@ -5,15 +5,20 @@
 <security:authorize access="isAnonymous()">
 	<li><a href="<spring:url value="/"/>"><spring:message
 				code="navigation.home.label" /></a></li>
-</security:authorize>
-<li><a href="<spring:url value="/forum/"/>"><spring:message
+	<li><a href="<spring:url value="/forum/"/>"><spring:message
 			code="navigation.forum.label" /></a></li>
+</security:authorize>
+
 <li><a href="<spring:url value="/users/"/>"><spring:message
 			code="navigation.users.label" /></a></li>
 
 <security:authorize access="isAuthenticated()">
+	<li><a href="<spring:url value="/wallPage"/>"><spring:message
+				code="navigation.forum.label" /></a></li>
 	<li><a href="<spring:url value="/profile/${currentUserId}"/>"><spring:message
 				code="navigation.Profile.label" /></a></li>
+	<%-- <li><a href="<spring:url value="/questionTypes"/>"><spring:message
+				code="navigation.types.label" /></a></li> --%>
 </security:authorize>
 
 <security:authorize access="hasRole('general')">
@@ -25,9 +30,10 @@
 </security:authorize>
 
 <security:authorize access="hasRole('admin')">
-
-	<li><a href="<spring:url value="/questionTypes/add"/>"><spring:message
-				code="navigation.questionType.label" /></a></li>
+	<li><a href="<spring:url value="/questionTypes/admin"/>"><spring:message
+				code="navigation.types.label" /></a></li>
+	<%-- <li><a href="<spring:url value="/questionTypes/add"/>"><spring:message
+				code="navigation.questionType.label" /></a></li> --%>
 	<li><a href="<spring:url value="/users/adminList"/>"><spring:message
 				code="navigation.allAdmins.label" /></a></li>
 

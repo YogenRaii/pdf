@@ -19,12 +19,11 @@ public class QuestionTypeServiceImpl implements QuestionTypeService {
 	}
 
 	public Integer updateQuestionType(QuestionType questionType) {
-		// TODO Auto-generated method stub
-		return null;
+		return questionTypeRepository.update(questionType)?1:0;
 	}
 
 	public void deleteQuestionType(int id) {
-		// TODO Auto-generated method stub
+		 questionTypeRepository.delete(id);
 		
 	}
 

@@ -131,24 +131,3 @@
 		</fieldset>
 	</form>
 </div>
-
-<div id="dialog-confirm-comment" title="Delete Answer?"
-	style="display: none">
-	<p>
-		<span class="ui-icon ui-icon-alert"
-			style="float: left; margin: 0 7px 20px 0;"></span>Do you want to
-		delete this answer?
-	</p>
-</div>
-
-<div id="dialog-update-comment" title="Update Answewr"
-	style="display: none">
-	<form>
-		<fieldset>
-			<label for="answer">Answer</label>
-			<textarea name="answer" id="answer"
-				class="text ui-widget-content ui-corner-all">
-            </textarea>
-		</fieldset>
-	</form>
-</div>

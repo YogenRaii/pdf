@@ -2,6 +2,7 @@ package com.bitMiners.pdf.repository.repositoryImpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,13 +22,18 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
 	}
 
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		Query query=sessionFactory.getCurrentSession().createQuery("delete from QuestionType q where q.id=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
 		
 	}
 
-	public boolean update(QuestionType t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(QuestionType questionType) {
+		Query query=sessionFactory.getCurrentSession().createQuery("update QuestionType q set q.description=:content where q.id=:id");
+		query.setParameter("content", questionType.getDescription());
+		query.setParameter("id", questionType.getId());
+		query.executeUpdate();
+		return true;
 	}
 
 	public QuestionType findOne(Integer id) {

@@ -1,0 +1,41 @@
+span {
+	font-style: italic;
+	font-weight: lighter;
+}
+
+.delete-questionType-container {
+	border: 1px solid;
+	border-radius: 10px;
+	background-color: ghostwhite;
+	margin-bottom: 4px;
+}
+
+.questionType-text {
+	display: inline;
+}
+
+.questionType-delete-img {
+	display: inline-block;
+	float: right;
+}
+
+.questionType-image img {
+	display: inline;
+	width: 40px;
+	display: block;
+	float: left;
+}
+
+.questionType-text-main {
+	display: inline-block;
+}
+
+.update-questionType {
+	display: inline-block;
+	float: right;
+	margin-right: 5px;
+}
+
+.update-questionType img {
+	width: 20px;
+}
