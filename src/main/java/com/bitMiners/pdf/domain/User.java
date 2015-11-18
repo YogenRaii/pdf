@@ -11,9 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class User implements Serializable {
 
@@ -24,11 +26,12 @@ public class User implements Serializable {
 	@Id @GeneratedValue
 	private int id;
 	
-	@NotBlank 
+	@NotEmpty 
 	private String username;
-	@NotBlank
+	@NotEmpty
+	@Size(min=4,max=10,message="{Size.password.validation}")
 	private String password;
-	@NotBlank @Email
+	@NotEmpty @Email
 	private String email;
 	
 	private Date dateCreated;

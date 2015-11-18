@@ -17,18 +17,19 @@
 			<fieldset>
 				<legend> Add Question </legend>
 
-				<form:errors path="*" cssClass="alert alert-danger" element="div" />
+				<%-- <form:errors path="*" cssClass="alert alert-danger" element="div" /> --%>
 
 				<div class="form-group">
 					<p>Question heading</p>
 					<input style="width: 525px;"  class=" form:input-large"
 						placeholder="Enter heading here . . ." name='heading' type="text"
-						value="">
+						value=""><p><form:errors path="heading" cssClass="alert alert-danger"/></p>
 				</div>
 				<div class="form-group">
 					<p>Question</p>
 					<textarea rows="6" cols="70"  class="form:input-large"
 						placeholder="Write question here . . ." name='questionContent'></textarea>
+						<p><form:errors path="questionContent" cssClass="alert alert-danger"/></p>
 				</div>
 				<div class="form-group">
 					<p>Choose Question Type</p>

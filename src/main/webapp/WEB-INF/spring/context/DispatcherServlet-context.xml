@@ -56,8 +56,33 @@
 	<!-- messges like error, internationalization -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames" value="messages" />
+		<property name="basenames" value="messages,error_messages" />
 	</bean>
+	
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		
+	</bean>
+	
+	<mvc:interceptors>
+ 		<bean class= "org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language"/>
+	 	</bean>	 	
+ 	</mvc:interceptors>
+     <!-- 		this is the parameter that the interceptor looks for -->	
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en_US"/>
+	</bean>
+
+	<bean id="messageAccessor" class="org.springframework.context.support.MessageSourceAccessor">
+    	<constructor-arg  ref="messageSource"/>
+	</bean> 
 	
 	<!-- working with image -->
 	<bean id="multipartResolver"

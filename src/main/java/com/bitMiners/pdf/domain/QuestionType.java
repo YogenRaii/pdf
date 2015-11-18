@@ -4,14 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class QuestionType {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+	@NotEmpty
 	private String name;
-	
+	@NotEmpty
 	private String description;
 	
 	public QuestionType(){}

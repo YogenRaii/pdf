@@ -36,20 +36,20 @@
 					</c:choose>
 				</legend>
 
-				<form:errors path="*" cssClass="alert alert-danger" element="div" />
+				<%-- <form:errors path="*" cssClass="alert alert-danger" element="div" /> --%>
 
 				<div class="form-group">
 					<input class="form:input-large" placeholder="User Name"
-						name='username' type="text">
+						name='username' type="text"><form:errors path="username" cssClass="alert alert-danger"/>
 				</div>
 				<div class="form-group">
 					<input class=" form:input-large" placeholder="Password"
-						name='password' type="password" value="">
+						name='password' type="password" value=""><form:errors path="password" cssClass="alert alert-danger"></form:errors>
 				</div>
 
 				<div class="form-group">
 					<input class=" form:input-large" placeholder="Email" name='email'
-						type="text" value="">
+						type="text" value=""><form:errors path="email" cssClass="alert alert-danger"/>
 				</div>
 				<input class="btn" type="submit" value="Register Now">
 			</fieldset>

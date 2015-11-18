@@ -1,8 +1,11 @@
 package com.bitMiners.pdf.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,7 +41,10 @@ public class QuestionTypeController {
 	}
 	
 	@RequestMapping(value="/questionTypes/addQuestionType",method=RequestMethod.POST)
-	public String addQuestionType(@ModelAttribute("questionType") QuestionType questionType){
+	public String addQuestionType(@Valid @ModelAttribute("questionType") QuestionType questionType,BindingResult result){
+		if(result.hasErrors()){
+			return "addQuestionType";
+		}
 		questionTypeService.saveQuestionType(questionType);
 		return "redirect:/questionTypes/admin";
 	}

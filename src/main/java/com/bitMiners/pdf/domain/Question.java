@@ -11,12 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class Question {
 
 	@Id @GeneratedValue
 	private int id;
+	@NotEmpty
 	private String heading;
+	@NotEmpty
 	private String questionContent;
     private Date dateCreated;
     

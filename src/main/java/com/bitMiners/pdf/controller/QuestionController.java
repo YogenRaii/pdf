@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,8 +60,12 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/questions/addQuestion",method=RequestMethod.POST)
-	public String addQuestion(@ModelAttribute("question") Question question,/*Model model*/HttpSession session){
+	public String addQuestion(@Valid @ModelAttribute("question") Question question,BindingResult result,/*Model model*/HttpSession session){
 //		String currentUsername=(String)((ModelMap) model).get("currentUser");
+		
+		if(result.hasErrors()){
+			return "addQuestion";
+		}
 		
 		String currentUsername=(String) session.getAttribute("currentUser");
 //		System.out.println("===================="+currentUsername);
