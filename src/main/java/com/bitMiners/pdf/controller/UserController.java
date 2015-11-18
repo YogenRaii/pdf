@@ -3,20 +3,27 @@ package com.bitMiners.pdf.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitMiners.pdf.domain.Profile;
 import com.bitMiners.pdf.domain.User;
+import com.bitMiners.pdf.service.ProfileService;
 import com.bitMiners.pdf.service.UserService;
 
 @Controller
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ProfileService profileService;
 	
 	@RequestMapping(value={"/users/list","/users"})
 	public String users(Model model){
@@ -59,6 +66,14 @@ public class UserController {
 	public String getAllAdmins(Model model){
 		model.addAttribute("userList", userService.getAllAdmins());
 		return "allUsers";
+	}
+
+	
+	@RequestMapping(value="/users/user/{id}",method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Profile getUserProfile(@PathVariable("id") int id){
+		Profile profile= profileService.getProfile(id);
+		System.out.println(profile.getFirstName());
+		return profile;
 	}
 	
 }

@@ -70,62 +70,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/questionTypesForm.jsp" />
 	</definition>
 	
-<!-- 	
-	<definition name="products" extends="baseLayout">
-		<put-attribute name="title" value="Products" />
-		<put-attribute name="tagline" value="Available Products" />
-		<put-attribute name="body" value="/WEB-INF/views/products.jsp" />
+	<definition name="questionDetails" extends="baseLayout">
+		<put-attribute name="title" value="Question Details" />
+		<put-attribute name="tagline" value="Questions Detail" />
+		<put-attribute name="body" value="/WEB-INF/views/questionInDetail.jsp" />
 	</definition>
 	
-	
-	
-	<definition name="userDetailsDisplay" extends="baseLayout">
-		<put-attribute name="title" value="User Details" />
-		<put-attribute name="tagline" value="Registered User" />
-		<put-attribute name="body" value="/WEB-INF/views/userDetails.jsp" />
-	</definition>
-	
-	<definition name="product" extends="baseLayout">
-		<put-attribute name="title" value="Product" />
-		<put-attribute name="tagline" value="Product" />
-		<put-attribute name="body" value="/WEB-INF/views/product.jsp" />
-	</definition>
-	
-	<definition name="addProduct" extends="baseLayout">
-		<put-attribute name="title" value="Products" />
-		<put-attribute name="tagline" value="Product" />
-		<put-attribute name="body" value="/WEB-INF/views/addProduct.jsp" />
-	</definition>
-	
-	<definition name="categories" extends="baseLayout">
-		<put-attribute name="title" value="Categories" />
-		<put-attribute name="tagline" value="Available Categories" />
-		<put-attribute name="body" value="/WEB-INF/views/categories.jsp" />
-	</definition>
-	
-	<definition name="category" extends="baseLayout">
-		<put-attribute name="title" value="Category" />
-		<put-attribute name="tagline" value="Category" />
-		<put-attribute name="body" value="/WEB-INF/views/category.jsp" />
-	</definition>
-	
-	<definition name="addCategory" extends="baseLayout">
-		<put-attribute name="title" value="Category" />
-		<put-attribute name="tagline" value="Category" />
-		<put-attribute name="body" value="/WEB-INF/views/addCategory.jsp" />
-	</definition>
-	
-	
-	
-	<definition name="cart" extends="baseLayout">
-		<put-attribute name="title" value="Shopping Cart" />
-		<put-attribute name="tagline" value="your shopping cart" />
-		<put-attribute name="body" value="/WEB-INF/views/cart.jsp" />
-	</definition>
-	 	
-	<definition name="productNotFound" extends="baseLayout">
-		<put-attribute name="title" value="Product Exception" />
- 		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
-	</definition>  -->
-	 	
 </tiles-definitions>

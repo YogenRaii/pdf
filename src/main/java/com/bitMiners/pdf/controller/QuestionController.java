@@ -45,6 +45,12 @@ public class QuestionController {
 		return "wallPage";
 	}
 	
+	@RequestMapping(value="/questions/question/{id}",method=RequestMethod.GET)
+	public String getQuestionDetail(@PathVariable("id")int id,Model model){
+		model.addAttribute("question", questionService.getQuestionById(id));
+		return "questionDetails";
+	}
+	
 	@RequestMapping(value="/questions/add",method=RequestMethod.GET)
 	public String addQuestion(@ModelAttribute("question") Question question,Model model){
 		model.addAttribute("questionTypes", questionTypeService.getAllQuestionTypes());

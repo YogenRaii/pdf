@@ -40,7 +40,7 @@ public class QuestionTypeController {
 	@RequestMapping(value="/questionTypes/addQuestionType",method=RequestMethod.POST)
 	public String addQuestionType(@ModelAttribute("questionType") QuestionType questionType){
 		questionTypeService.saveQuestionType(questionType);
-		return "redirect:/questionTypes";
+		return "redirect:/questionTypes/admin";
 	}
 	
 	@RequestMapping(value="/questionTypes/delete/{id}",method=RequestMethod.GET)

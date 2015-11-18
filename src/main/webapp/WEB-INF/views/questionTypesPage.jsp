@@ -20,6 +20,8 @@
 
 	<div class="panel-body">
 		<div class="row">
+		<c:if test="${role eq 'admin' }">
+		<p><a href='<spring:url value="/questionTypes/add"></spring:url>'>Add New Question Type</a> </p> </c:if>
 			<c:forEach items="${questionTypes}" var="questionType">
 				<div class="delete-questionType-container"
 					id="delete-questionType-${questionType.id}">

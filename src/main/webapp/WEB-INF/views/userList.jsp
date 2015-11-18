@@ -4,6 +4,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="/pdf/resource/js/user.js" type="text/javascript"></script>
+
 <section class="container">
 	<%-- <form method="get" action="users/user">
 		<p>
@@ -20,11 +28,14 @@
 						<h3>${user.username}</h3>
 						<p>ID: ${user.email }</p>
 						<%-- <p>${product.description}</p> --%>
-						<p>
-							<a href=" <spring:url value='/users/user?id=${user.id}' /> "
+						<p class="user-details"  id="${user.id }">
+						<span class="btn btn-primary"
+								class="glyphicon-info-sign glyphicon"> Details</span>
+						
+							<%-- <a href=" <spring:url value='/users/user?id=${user.id}' /> "
 								class="btn btn-primary"> <span
 								class="glyphicon-info-sign glyphicon" /></span> Details
-							</a>
+							</a> --%>
 						</p>
 
 					</div>
@@ -33,3 +44,7 @@
 		</c:forEach>
 	</div>
 </section>
+
+<div id="user-detail" title="User Detail" style="display: none">
+	
+</div>

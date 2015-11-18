@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class User implements Serializable {
 
@@ -20,8 +23,12 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -9067986418908847017L;
 	@Id @GeneratedValue
 	private int id;
+	
+	@NotBlank 
 	private String username;
+	@NotBlank
 	private String password;
+	@NotBlank @Email
 	private String email;
 	
 	private Date dateCreated;

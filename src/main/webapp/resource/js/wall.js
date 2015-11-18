@@ -87,7 +87,7 @@ $(function () {
 
     $(document).on('click','.comment-delete-img',function(){
         var commentId = this.id;
-        $( "#dialog-confirm-comment" ).dialog({
+        $( "#dialog-confirm-answer" ).dialog({
             resizable: false,
             height:200,
             modal: true,
@@ -98,7 +98,7 @@ $(function () {
                         dataType: "json",
                         success: function (output) {
                             if(output == 1){
-                                $("#dialog-confirm-comment").dialog( "close" );
+                                $("#dialog-confirm-answer").dialog( "close" );
                                 $("#delete-comment-"+commentId).remove();
                             }
                         }
@@ -116,7 +116,7 @@ $(function () {
             var commentId = this.id;
             $('#answer').val($("#comment-text-"+commentId).text().trim());
 
-            $( "#dialog-update-comment" ).dialog({
+            $( "#dialog-update-answer" ).dialog({
 //                autoOpen: false,
                 height: 300,
                 width: 350,
@@ -131,7 +131,7 @@ $(function () {
                             contentType: "application/json;charset=utf-8",
                             success: function (output) {
                                 if(output == 1){
-                                    $("#dialog-update-comment").dialog( "close" );
+                                    $("#dialog-update-answer").dialog( "close" );
                                     $("#comment-text-"+commentId).text(answerText);
                                 }
                             }
@@ -143,7 +143,7 @@ $(function () {
                 }
         });
 
-        $( "#dialog-update-comment" ).dialog( "open" );
+        $( "#dialog-update-answer" ).dialog( "open" );
      });
 
     function createComment(text, itemid, commentid) {
