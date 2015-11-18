@@ -1,8 +1,11 @@
 package com.bitMiners.pdf.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,9 +52,13 @@ public class ProfileController {
 //	}
 	
 	@RequestMapping(value="/profile/{id}",method=RequestMethod.POST)
-	public String setProfile(@ModelAttribute("profile") Profile profile,Model model){
+	public String setProfile(@Valid @ModelAttribute("profile") Profile profile,BindingResult result, Model model){
 		System.out.println("-----------/profile/  method=POST");
 		System.out.println(profile.toString());
+		
+		if(result.hasErrors()){
+			return "profile";
+		}
 		profileService.updateProfile(profile);
 		return "redirect:/profile/{id}";
 	}
@@ -64,8 +71,12 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="/profile/edit/{currentUserId}",method=RequestMethod.POST)
-	public String editProfile(@ModelAttribute("profile") Profile profile,@PathVariable("currentUserId") int id){
+	public String editProfile(@Valid @ModelAttribute("profile") Profile profile,BindingResult result, @PathVariable("currentUserId") int id){
 		//add code here to edit the profile
+		if(result.hasErrors()){
+			return "profile";
+		}
+		
 		return "redirect:/profile/"+id;
 	}
 	

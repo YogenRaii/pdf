@@ -12,7 +12,6 @@
 			<br />
 		</div>
 	</c:if>
-	<form:errors path="*" cssClass="alert alert-danger" element="div" />
 
 	<form action="../profile/portrait/${profile.id}"
 		enctype="multipart/form-data" method="post">
@@ -23,22 +22,27 @@
 
 	<c:choose>	
 		<c:when test="${operation eq 'edit' }">
-			<form:form action="../profile/edit/${profile.id}" method="post">
+			<form:form action="/pdf/profile/edit/${profile.id}" modelAttribute="profile" method="post">
 
 				<fieldset>
 					<legend>My Profile</legend>
 					<strong>FirstName: </strong><input type="text" name="firstName"
-						value="${profile.firstName}" size="16" /> <br /> <strong>LastName:
-					</strong><input type="text" name="lastName" value="${profile.lastName}"
-						size="16" /> <br /> <strong>Address: </strong><input type="text"
-						name="address" value="${profile.address}" size="16" /> <br /> <strong>Gender:
+						value="${profile.firstName}" size="16" /> <form:errors path="firstName" cssClass="alert alert-danger"/><br /> 
+						
+						<strong>LastName:</strong><input type="text" name="lastName" value="${profile.lastName}"
+						size="16" /> <form:errors path="lastName" cssClass="alert alert-danger"/><br /> 
+						
+						<strong>Address: </strong><input type="text"
+						name="address" value="${profile.address}" size="16" /> <form:errors path="address" cssClass="alert alert-danger"/><br /> 
+						
+						<strong>Gender:
 					</strong> <label><input type="radio" name="gender" value="M"
 						<c:if test="${profile.gender != 'F'}">checked</c:if> /> Male</label> <label><input
 						type="radio" name="gender" value="F"
 						<c:if test="${profile.gender == 'F'}">checked</c:if> /> Female</label> <br />
 
 					<strong>Birthday: </strong><input type="date" name="dateOfBirth"
-						value="${profile.dateOfBirth}" size="8" maxlength="8" /> <br />
+						value="${profile.dateOfBirth}" size="8" maxlength="8" /> <form:errors path="dateOfBirth" cssClass="alert alert-danger"/><br />
 					<strong>Occupation:</strong> <select name="occupation">
 						<option
 							<c:if test="${profile.occupation == 'Engineer'}">selected</c:if>>Engineer</option>
@@ -80,22 +84,22 @@
 		</c:when>
 
 		<c:otherwise>
-			<form action="../profile/${profile.id}" method="post">
+			<form:form action="../profile/${profile.id}" modelAttribute="profile" method="post">
 
 				<fieldset>
 					<legend>My Profile</legend>
 					<strong>FirstName: </strong><input type="text" name="firstName"
-						size="16" /> <br /> <strong>LastName:
+						size="16" /> <form:errors path="firstName" cssClass="alert alert-danger"/><br /> <strong>LastName:
 					</strong><input type="text" name="lastName" 
-						size="16" /> <br /> <strong>Address: </strong><input type="text"
-						name="address" size="16" /> <br /> <strong>Gender:
+						size="16" /> <form:errors path="lastName" cssClass="alert alert-danger"/><br /> <strong>Address: </strong><input type="text"
+						name="address" size="16" /> <form:errors path="address" cssClass="alert alert-danger"/><br /> <strong>Gender:
 					</strong> <label><input type="radio" name="gender" value="M"
 						<c:if test="${profile.gender != 'F'}">checked</c:if> /> Male</label> <label><input
 						type="radio" name="gender" value="F"
 						<c:if test="${profile.gender == 'F'}">checked</c:if> /> Female</label> <br />
 
 					<strong>Birthday: </strong><input type="date" name="dateOfBirth"
-						 size="8" maxlength="8" /> <br />
+						 size="8" maxlength="8" /> <form:errors path="dateOfBirth" cssClass="alert alert-danger"/><br />
 					<strong>Occupation:</strong> <select name="occupation">
 						<option
 							<c:if test="${profile.occupation == 'Engineer'}">selected</c:if>>Engineer</option>
@@ -118,7 +122,7 @@
 					</select> <br /> <input type="submit" value="Submit" />
 				</fieldset>
 
-			</form>
+			</form:form>
 		</c:otherwise>
 	</c:choose>
 

@@ -7,18 +7,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Profile {
 	@Id @GeneratedValue
 	private int id;
+	@NotEmpty @NotNull
 	private String firstName;
+	@NotEmpty @NotNull
 	private String lastName;
+	@NotEmpty @NotNull
 	private String address;
 	private String occupation;
 	private String gender;
+	@NotEmpty 
 	private String portrait;
 
 	@Temporal(TemporalType.DATE)
