@@ -6,7 +6,7 @@ $(function () {
                 dataType : 'json',
                 contentType: "application/json;charset=utf-8",
                 success: function (output) {
-                	alert(output);
+                	console.log(output);
                 	$("#user-detail").dialog({
 //                		$("#user-detail").append();
                 		buttons:{
@@ -19,6 +19,7 @@ $(function () {
                 },
             error: function(error,xhr) {
 				alert(error+" "+xhr.status);
+				console.log(error);
 			}
             
             });

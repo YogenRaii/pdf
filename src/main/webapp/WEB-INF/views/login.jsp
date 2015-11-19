@@ -18,7 +18,7 @@
 				<legend>Please sign in</legend>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div" />
-
+				<p style="color: red;">${message}</p>
 				<div class="form-group">
 					<input class="form:input-large" placeholder="User Name"
 						name='username' type="text">

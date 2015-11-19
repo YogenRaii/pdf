@@ -8,7 +8,7 @@
 <title>BitMiner</title>
 </head>
 <body>
-	<h1>Welcome</h1>
+	<h1>You are trying to access the authorized pages...</h1>
 	
 </body>
 </html>

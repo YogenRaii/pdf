@@ -17,6 +17,8 @@
 <!-- use-expressions enables URL level authorization -->
 	<security:http use-expressions="true" auto-config="true">
 	
+	
+	
 	<!-- Need to redirect exception for web authorization -->
 	<security:access-denied-handler error-page="/error-forbidden" />
 	
@@ -24,6 +26,14 @@
 	<!-- the more specific rules need to come first, followed by the more general ones. -->
 	<!-- COMmENT out the following to see @Service METHOD level authorization -->
 	
+	<security:intercept-url pattern="/wallPage" access="hasAnyRole('admin','general')" />  	
+	  <security:intercept-url pattern="/questionTypes/admin" access="hasRole('admin')"  />
+	  <security:intercept-url pattern="/questions/add" access="hasAnyRole('admin','general')"  />
+	  <security:intercept-url pattern="/questionTypes" access="hasAnyRole('admin','general')"  />
+	  <security:intercept-url pattern="/profile/*" access="hasAnyRole('admin','general')"  />
+	  <security:intercept-url pattern="/users/adminList" access="hasRole('admin')"  />
+	 <security:intercept-url pattern="/users/addAdminForm" access="hasRole('admin')"  />
+	  
 		<!-- always-use-default-target overrides where login was triggered -->
 		<!-- logout-url renames j_security_logout URL -->
 		<!-- similarly username,password,Login-processing  renames j_security_* stuff -->
@@ -63,4 +73,9 @@
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager> -->
+	
+	<bean id="accessDeniedHandler"
+     class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+  <property name="errorPage" value="/accessDenied.htm"/>
+</bean>
 </beans>

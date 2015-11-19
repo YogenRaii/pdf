@@ -29,7 +29,7 @@ public class User implements Serializable {
 	@NotEmpty 
 	private String username;
 	@NotEmpty
-	@Size(min=4,max=10,message="{Size.password.validation}")
+	@Size(min=4,max=10,message="Password must of 4 to 10 characters.")
 	private String password;
 	@NotEmpty @Email
 	private String email;
@@ -37,6 +37,7 @@ public class User implements Serializable {
 	private Date dateCreated;
 	
 	private String role;
+	
 	
 	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private Profile profile;

@@ -37,6 +37,10 @@ public class LoginController {
 
 	}
 
+	@RequestMapping("/error-forbidden")
+	public String errorForbidden(){
+		return "error-forbidden";
+	}
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model,SessionStatus session) {
 		SecurityContextHolder.getContext().setAuthentication(null);
@@ -48,12 +52,16 @@ public class LoginController {
 	public String postLogin(String username, String password, Model model) {
 //		 System.out.println("================" + principal.getName());
 
+		if(username == null || password == null){
+			model.addAttribute("message", "None of field can be empty");
+		}
 		boolean isCorrect = userService.isCorrectUsernameAndPassword(username, password);
 		if (isCorrect) {
 			model.addAttribute("currentUserId", userService.getUserByUsername(username).getId());
 			model.addAttribute("currentUser", username);
 			return "redirect:/wallPage";
 		}
+		model.addAttribute("message", "Username or password didn't matched");
 		return "login";
 
 		// return "redirect:/welcome";
