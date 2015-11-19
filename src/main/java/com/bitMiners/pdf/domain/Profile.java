@@ -16,15 +16,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Profile {
 	@Id @GeneratedValue
 	private int id;
-//	@NotEmpty @NotNull
+	//@NotEmpty @NotNull
 	private String firstName;
-//	@NotEmpty @NotNull
+	//@NotEmpty @NotNull
 	private String lastName;
-//	@NotEmpty @NotNull
+	//@NotEmpty @NotNull
 	private String address;
 	private String occupation;
 	private String gender;
-//	@NotEmpty 
+	//@NotEmpty 
 	private String portrait;
 
 	@Temporal(TemporalType.DATE)
