@@ -19,8 +19,8 @@ public class SignupAdvice {
 	public void aopEmail(JoinPoint jp) {
 		System.out.println("hello sabin");
 		User user = (User) jp.getArgs()[0];
-		emailService.sendEmail(user.getEmail(), "Registration info","Registered Sucessfully to Programming discussion forum!! "+
-				"Your username is: "+user.getUsername()+". Share your idea in PdF...");
+//		emailService.sendEmail(user.getEmail(), "Registration info","Registered Sucessfully to Programming discussion forum!! "+
+//				"Your username is: "+user.getUsername()+". Share your idea in PdF...");
 //		
 	}
 }

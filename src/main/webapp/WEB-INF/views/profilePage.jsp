@@ -36,7 +36,7 @@
 				</c:when>
 				<c:otherwise>
 					<c:if test="${profile.id == userId}" >
-						<a href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Portrait</a>
+						<a class="edit" href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Portrait</a>
 						</c:if>
 				</c:otherwise>
 			</c:choose>
@@ -125,7 +125,7 @@
 				
 				
 				<c:if test="${profile.id == userId}" >
-					<a href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Profile</a>
+					<a class="edit" href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Profile</a>
 				</c:if>
 			</fieldset>
 		</form>
