@@ -80,21 +80,6 @@ public class ProfileController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-//		System.out.println("-----------/setProfile/  method=POST");
-//		String filename = "../"+ profile.getId() + image.getOriginalFilename(); 
-//		File file = new File(filename);
-//		System.out.println("-----------/setProfile/  fileName" + filename);		 
-//		try {
-//			FileUtils.writeByteArrayToFile(file, image.getBytes());
-//			System.out.println("Go to the location:  " + file.toString()
-//			+ " on your computer and verify that the image has been stored.");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("-----------/setProfile/  method=POST");
-//		System.out.println(profile.toString());
-//		profileService.updateProfile(profile);
 		return "redirect:/profile/{id}";
 	}
 	
@@ -111,7 +96,12 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="/profile/edit/{currentUserId}",method=RequestMethod.GET)
-	public String editProfile(@PathVariable("currentUserId") int id,@ModelAttribute("profile") Profile profile,Model model){
+	public String editProfile(@PathVariable("currentUserId") int id,
+			@ModelAttribute("profile") Profile profile,Model model,HttpSession session){
+		int userId = (Integer) session.getAttribute("userId");
+		if (userId != id) {
+			return "redirect:/profile/"+id;
+		}
 		model.addAttribute("operation", "edit");
 		System.out.println(profileService.getProfile(id).toString());
 		model.addAttribute("profile", profileService.getProfile(id));
@@ -119,12 +109,16 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="/profile/edit/{currentUserId}",method=RequestMethod.POST)
-	public String editProfile(@Valid @ModelAttribute("profile") Profile profile,BindingResult result, @PathVariable("currentUserId") int id){
+	public String editProfile(@Valid @ModelAttribute("profile") Profile profile,BindingResult result, 
+			@PathVariable("currentUserId") int id, HttpSession session){
 		//add code here to edit the profile
 		if(result.hasErrors()){
 			return "profile";
 		}
-		
+		int userId = (Integer) session.getAttribute("userId");
+		if (userId != id) {
+			return "redirect:/profile/"+id;
+		}
 		Profile oldProfile = profileService.getProfile(id); 
 		profile.setId(id);
 		profile.setPortrait(oldProfile.getPortrait());

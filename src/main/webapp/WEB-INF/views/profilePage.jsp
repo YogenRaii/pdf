@@ -1,3 +1,4 @@
+<%@page import="com.bitMiners.pdf.controller.ProfileController"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -5,6 +6,7 @@
 <link href="/pdf/resource/css/profile.css" type="text/css"
 	rel="stylesheet" />
 <div>
+<% Integer userId = (Integer)(session.getAttribute("userId")); %>
 	<c:if test="${not empty error}">
 		<div class="alert alert-danger">
 			<spring:message
@@ -33,7 +35,9 @@
 					<input type="submit" value="Submit" />
 				</c:when>
 				<c:otherwise>
-					<a href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Portrait</a>
+					<c:if test="${profile.id == userId}" >
+						<a href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Portrait</a>
+						</c:if>
 				</c:otherwise>
 			</c:choose>
 		</fieldset>
@@ -90,14 +94,39 @@
 		<form>
 			<fieldset class="profile">
 				<!--<legend>My Profile</legend>-->
-				<strong>FirstName: </strong><span> ${profile.firstName}</span> <br>
-				<strong>LastName: </strong><span>${profile.lastName }</span><br />
-
-				<strong>Address: </strong><span>${profile.address}</span><br /> <strong>Gender:
-				</strong> <span>${profile.gender}</span><br> <strong>Birthday:
-				</strong><span>${profile.dateOfBirth}</span> <br /> <strong>Occupation:</strong><span>${profile.occupation}</span><br>
+				<strong>FirstName: </strong>
+				<c:if test="${profile.firstName != 'NULL' }">
+					<span> ${profile.firstName}</span>
+				</c:if>
+				 <br>
+				<strong>LastName: </strong>
+				<c:if test="${profile.lastName != 'NULL' }">
+					<span> ${profile.lastName}</span>
+				</c:if>
+				<br>
+				<strong>Address: </strong>
+				<c:if test="${profile.address != 'NULL' }">
+					<span> ${profile.address}</span>
+				</c:if>
+				<br>
+				<strong>Gender:</strong>
+				<c:if test="${profile.gender != 'NULL' }">
+					<span> ${profile.gender}</span>
+				</c:if>
+				<br>
+				<strong>Birthday:</strong>
+				<span>${profile.dateOfBirth}</span> <br /> 
+				<strong>Occupation:</strong>
+				<c:if test="${profile.occupation != 'NULL' }">
+					<span> ${profile.occupation}</span>
+				</c:if>
+				<br>
 				<!--<strong>Potrait: </strong><span>${profile.portrait}</span>-->
-				<a href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Profile</a>
+				
+				
+				<c:if test="${profile.id == userId}" >
+					<a href="<spring:url value="/profile/edit/${profile.id}"/>">Edit Profile</a>
+				</c:if>
 			</fieldset>
 		</form>
 		</c:otherwise>

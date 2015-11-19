@@ -48,7 +48,8 @@ public class UserController {
 		}
 		user.setProfile(new Profile());
 		user.setDateCreated(new Date());
-		user.setRole("regular");
+		//user.setRole("regular");
+		user.setRole("general");
 		userService.addUser(user);
 		return "redirect:/users/list";
 	}

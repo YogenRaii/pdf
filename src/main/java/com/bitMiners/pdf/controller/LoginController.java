@@ -5,6 +5,7 @@ import java.security.Principal;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,7 +50,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/postLogin", method = RequestMethod.POST)
-	public String postLogin(String username, String password, Model model) {
+	public String postLogin(String username, String password, Model model, HttpSession session) {
 //		 System.out.println("================" + principal.getName());
 
 		if(username == null || password == null){
@@ -59,6 +60,7 @@ public class LoginController {
 		if (isCorrect) {
 			model.addAttribute("currentUserId", userService.getUserByUsername(username).getId());
 			model.addAttribute("currentUser", username);
+			session.setAttribute("userId", userService.getUserByUsername(username).getId());
 			return "redirect:/wallPage";
 		}
 		model.addAttribute("message", "Username or password didn't matched");

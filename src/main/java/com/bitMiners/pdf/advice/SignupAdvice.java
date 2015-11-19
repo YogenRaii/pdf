@@ -19,7 +19,7 @@ public class SignupAdvice {
 	public void aopEmail(JoinPoint jp) {
 		System.out.println("hello sabin");
 		User user = (User) jp.getArgs()[0];
-		emailService.sendEmail(user.getEmail(), "Success","Registered Sucessfully!!");
+		//emailService.sendEmail(user.getEmail(), "Success","Registered Sucessfully!!");
 //		
 	}
 }
