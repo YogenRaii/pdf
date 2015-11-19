@@ -71,12 +71,9 @@
 <div id="dialog-update-questionType" title="Update Question Type"
 	style="display: none">
 	<form>
-		<fieldset>
-			<label for="question">Question Type</label>
-			<textarea name="questionType" id="questionType"
-				class="text ui-widget-content ui-corner-all">
-            </textarea>
-		</fieldset>
+		<textarea name="questionType" id="questionType"
+			class="text ui-widget-content ui-corner-all">
+        </textarea>
 	</form>
 </div>
 
