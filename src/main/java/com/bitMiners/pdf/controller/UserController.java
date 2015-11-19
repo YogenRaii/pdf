@@ -30,7 +30,7 @@ public class UserController {
 	@Autowired
 	private ProfileService profileService;
 	
-	@RequestMapping(value={"/list","/users"})
+	@RequestMapping(value={"/list",""})
 	public String users(Model model){
 		model.addAttribute("userList", userService.getAllUsers());
 		return "allUsers";
