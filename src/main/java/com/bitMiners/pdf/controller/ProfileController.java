@@ -42,13 +42,16 @@ public class ProfileController {
 	
 	@RequestMapping(value="/profile/{id}", method=RequestMethod.GET)
 	public String getProfile(@PathVariable int id, Model model){
-		System.out.println("-----------/profile/"+id);
-		System.out.println(profileService.getProfile(id).toString());
-		model.addAttribute("profile", profileService.getProfile(id));
+		try {
+			System.out.println("-----------/profile/"+id);
+			System.out.println(profileService.getProfile(id).toString());
+			model.addAttribute("profile", profileService.getProfile(id));
+		} catch (Exception e) {
+			return "error-forbidden";
+		}
 		return "profile";
 	}
 	
-	@SuppressWarnings("deprecation")
 	@RequestMapping(value="/profile/portrait/{id}", method=RequestMethod.POST)
 	public String setportrait(@ModelAttribute("profile") Profile profile,BindingResult bindingResult,
 			@RequestParam(value = "image", required = false) MultipartFile image,
