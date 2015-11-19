@@ -124,12 +124,9 @@
 <div id="dialog-update-question" title="Update Question"
 	style="display: none">
 	<form>
-		<fieldset>
-			<label for="question">Question</label>
-			<textarea name="question" id="question"
+		<textarea name="question" id="question"
 				class="text ui-widget-content ui-corner-all">
-            </textarea>
-		</fieldset>
+        </textarea>
 	</form>
 </div>
 

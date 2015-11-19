@@ -1,14 +1,14 @@
 
 * {
-	font-size: 12pt;
-	font-family: "Verdana", "Geneva", sans-serif;
+	//font-size: 12pt;
+	//font-family: "Verdana", "Geneva", sans-serif;
 }
 
-a {
+a.edit {
 	color: #F44;
 	text-decoration: none;
 }
-
+/*
 a:hover {
 	background-color: #FFA;
 }
@@ -16,7 +16,7 @@ a:hover {
 a img {
 	border: none;
 }
-
+*/
 body {
 	background-color: white;
 	padding-left: 1em;

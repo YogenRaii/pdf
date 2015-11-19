@@ -56,7 +56,7 @@ $(function () {
         $("#dialog-update-question").dialog({
 //            autoOpen: false,
             height: 300,
-            width: 350,
+            width: 550,
             modal: true,
             buttons: {
                 'OK': function() {
