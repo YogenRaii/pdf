@@ -24,7 +24,7 @@ body {
 
 body >/* div, */form {
 	overflow: hidden;
-	width: 55em;
+	width: 35em;
 }
 
 div {
@@ -96,6 +96,14 @@ ul li a img {
 	vertical-align: middle;
 }
 
+form {
+    padding-bottom: 15px;
+}
+
+fieldset.portrait {
+    /*float: left;*/
+    width: 300px;
+}
 footer {
 	font-size: x-small;
 	clear: both;
