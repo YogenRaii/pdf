@@ -22,6 +22,7 @@ import com.bitMiners.pdf.service.QuestionService;
 import com.bitMiners.pdf.service.UserService;
 
 @Controller
+@RequestMapping("/answers")
 public class AnswerController {
 
 	@Autowired
@@ -33,12 +34,8 @@ public class AnswerController {
 	@Autowired
 	private QuestionService questionService;
 	
-	@RequestMapping(value="/answers/add/{questionId}/{userId}",method=RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/add/{questionId}/{userId}",method=RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Integer addAnswer(@Valid @RequestBody  Answer answer,BindingResult result,@PathVariable("questionId") int questionId,@PathVariable("userId") int userId){
-//		System.out.println(answer.getAnswerContent());
-//		Answer answer=new Answer();
-//		answer.setAnswerContent(ans);
-//		System.out.println("========="+userId);
 		if(result.hasErrors()){
 			return -1;
 		}
@@ -49,13 +46,13 @@ public class AnswerController {
 		return answerService.saveAnswer(answer);
 	}
 	
-	@RequestMapping(value="/answers/delete/{answerId}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{answerId}",method=RequestMethod.GET)
 	public @ResponseBody Integer deleteAnswer(@PathVariable("answerId") int id){
 		answerService.deleteAnswer(id);
 		return 1;
 	}
 	
-	@RequestMapping(value="/answers/edit/{answerId}",method=RequestMethod.POST)
+	@RequestMapping(value="/edit/{answerId}",method=RequestMethod.POST)
 	public @ResponseBody Integer updateAnswer( @RequestBody Answer answer, @PathVariable("answerId") int id){
 		answer.setId(id);
 		return answerService.updateAnswer(answer);

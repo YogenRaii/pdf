@@ -1,0 +1,7 @@
+AOP :send email using smtp protocal
+Spring Security
+validation
+RESTful services
+tiles
+
+file upload

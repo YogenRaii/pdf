@@ -18,18 +18,19 @@ import com.bitMiners.pdf.domain.QuestionType;
 import com.bitMiners.pdf.service.QuestionTypeService;
 
 @Controller
+@RequestMapping("/questionTypes")
 public class QuestionTypeController {
 
 	@Autowired
 	private QuestionTypeService questionTypeService;
 	
-	@RequestMapping("/questionTypes")
+	@RequestMapping("")
 	public String getAllQuestionTypes(Model model){
 		model.addAttribute("questionTypes", questionTypeService.getAllQuestionTypes());
 		return "questionTypes";
 	}
 	
-	@RequestMapping("/questionTypes/admin")
+	@RequestMapping("/admin")
 //	@PreAuthorize("hasRole('admin')")
 	public String getAllQuestionTypesForAdmin(Model model){
 		model.addAttribute("questionTypes", questionTypeService.getAllQuestionTypes());
@@ -37,12 +38,12 @@ public class QuestionTypeController {
 		return "questionTypes";
 	}
 	
-	@RequestMapping(value="/questionTypes/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String addQuestionTypeForm(@ModelAttribute("questionType") QuestionType questionType){
 		return "addQuestionType";
 	}
 	
-	@RequestMapping(value="/questionTypes/addQuestionType",method=RequestMethod.POST)
+	@RequestMapping(value="/addQuestionType",method=RequestMethod.POST)
 	public String addQuestionType(@Valid @ModelAttribute("questionType") QuestionType questionType,BindingResult result){
 		if(result.hasErrors()){
 			return "addQuestionType";
@@ -51,13 +52,13 @@ public class QuestionTypeController {
 		return "redirect:/questionTypes/admin";
 	}
 	
-	@RequestMapping(value="/questionTypes/delete/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	public @ResponseBody Integer deleteQuestionType(@PathVariable("id") int id){
 		questionTypeService.deleteQuestionType(id);
 		return 1;
 	}
 	
-	@RequestMapping(value="/questionTypes/edit/{id}",method=RequestMethod.PATCH)
+	@RequestMapping(value="/edit/{id}",method=RequestMethod.PATCH)
 	public @ResponseBody Integer editQuestionType(@RequestBody QuestionType questionType, @PathVariable("id") int id){
 		questionType.setId(id);
 		return questionTypeService.updateQuestionType(questionType);

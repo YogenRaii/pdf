@@ -8,11 +8,18 @@ $(function () {
                 success: function (profile) {
                 	console.log(profile);
                 	$("#user-detail").empty();
-                	var info ="<div><p>Name: "+profile.firstName+" "+profile.lastName+"</p>"+
-                	"<p>Occupation: "+profile.occupation+"</p>"+
-                	"<p>Address: "+profile.address+"</p>"+
-                	"<p>Date Of birth: "+profile.dateOfBirth+"</p>"+
-                	"</div>"
+                	
+                	var info;
+                	if(profile.firstName == null || profile.firstName=='NULL'){
+                		info="<div><p>Profile has not been created yet.</p></div>";
+                	}else{
+                		info ="<div><p>Name: "+profile.firstName+" "+profile.lastName+"</p>"+
+                    	"<p>Occupation: "+profile.occupation+"</p>"+
+                    	"<p>Address: "+profile.address+"</p>"+
+                    	"<p>Date Of birth: "+profile.dateOfBirth+"</p>"+
+                    	"</div>";
+                	}
+                	
                 	$("#user-detail").append(info);
                 	$("#user-detail").dialog({
                 		
@@ -22,7 +29,6 @@ $(function () {
                             }
                 		}
                 	})
-//                    createInfo();
                 },
             error: function(error,xhr) {
 				alert(error+" "+xhr.status);

@@ -3,6 +3,7 @@ package com.bitMiners.pdf.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -13,7 +14,7 @@ public class QuestionType {
 	private int id;
 	@NotEmpty
 	private String name;
-	@NotEmpty
+	@NotEmpty @Lob
 	private String description;
 	
 	public QuestionType(){}

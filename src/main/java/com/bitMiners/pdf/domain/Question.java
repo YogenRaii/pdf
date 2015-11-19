@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -20,7 +21,7 @@ public class Question {
 	private int id;
 	@NotEmpty
 	private String heading;
-	@NotEmpty
+	@NotEmpty @Lob
 	private String questionContent;
     private Date dateCreated;
     

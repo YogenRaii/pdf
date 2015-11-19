@@ -23,9 +23,7 @@ public class Profile implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private int id;
-	//@NotEmpty @NotNull
 	private String firstName;
-	//@NotEmpty @NotNull
 	private String lastName;
 	//@NotEmpty @NotNull
 	private String address;

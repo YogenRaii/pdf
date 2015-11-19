@@ -31,7 +31,7 @@
 			<h4 class="subTitle">Adding cutting edge concept to programming</h4>
 			<security:authorize access="isAuthenticated()">
 			<div class="username">
-			Hello <security:authentication property="principal.username" />
+			logged in as <i> <security:authentication property="principal.username" /></i>
 			</div>
 			</security:authorize>
 		</div>

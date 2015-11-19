@@ -22,6 +22,7 @@ import com.bitMiners.pdf.service.ProfileService;
 import com.bitMiners.pdf.service.UserService;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
 	@Autowired
 	private UserService userService;
@@ -29,19 +30,19 @@ public class UserController {
 	@Autowired
 	private ProfileService profileService;
 	
-	@RequestMapping(value={"/users/list","/users"})
+	@RequestMapping(value={"/list","/users"})
 	public String users(Model model){
 		model.addAttribute("userList", userService.getAllUsers());
 		return "allUsers";
 	}
 	
-	@RequestMapping(value="/users/signupForm",method=RequestMethod.GET)
+	@RequestMapping(value="/signupForm",method=RequestMethod.GET)
 	public String addUser(@ModelAttribute("user") User user,Model model){
 		model.addAttribute("url", "signup");
 		return "addUser";
 	}
 	
-	@RequestMapping(value="/users/signup",method=RequestMethod.POST)
+	@RequestMapping(value="/signup",method=RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("user") User user,BindingResult result){
 		if(result.hasErrors()){
 			return "addUser";
@@ -53,14 +54,14 @@ public class UserController {
 		return "redirect:/users/list";
 	}
 	
-	@RequestMapping(value="/users/addAdminForm",method=RequestMethod.GET)
+	@RequestMapping(value="/addAdminForm",method=RequestMethod.GET)
 	public String addAdmin(@ModelAttribute("user") User user,Model model){
 		model.addAttribute("admin", "admin");
 		model.addAttribute("url","addAdmin");
 		return "addUser";
 	}
 	
-	@RequestMapping(value="/users/addAdmin",method=RequestMethod.POST)
+	@RequestMapping(value="/addAdmin",method=RequestMethod.POST)
 	public String addAdmin(@ModelAttribute("user") User user){
 		user.setProfile(new Profile());
 		user.setDateCreated(new Date());
@@ -69,14 +70,14 @@ public class UserController {
 		return "redirect:/users/adminList";
 	}
 	
-	@RequestMapping(value="/users/adminList",method=RequestMethod.GET)
+	@RequestMapping(value="/adminList",method=RequestMethod.GET)
 	public String getAllAdmins(Model model){
 		model.addAttribute("userList", userService.getAllAdmins());
 		return "allUsers";
 	}
 
 	
-	@RequestMapping(value="/users/user/{id}",method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/user/{id}",method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Profile getUserProfile(@PathVariable("id") int id){
 		Profile profile= profileService.getProfile(id);
 		System.out.println(profile.getFirstName());

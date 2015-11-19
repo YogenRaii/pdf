@@ -29,18 +29,18 @@
 								<input type="hidden" id="user_id" value="${	question.user.id }">
 								<input type="hidden" id="username"
 									value="${question.user.username }">
+									
+									<!-- check if question belongs to current user -->
+								<c:if test="${question.user.id eq currentUserId }">
+					
 								<div class="deleteimage" id="${question.id}">
 									<img src="<c:url value="/resource/images/delete.png" />">
 								</div>
 								<div class="update-question" id="${question.id}">
 									<img src="<c:url value="/resource/images/edit.png" />">
 								</div>
-<%-- 
-								<div class="done-or-not">
-									<label><input type="checkbox" value="0"
-										id="${question.id}">Done</label>
-								</div>
- --%>
+								</c:if>
+
 								<div class="todoimg">
 									<img src="<c:url value="/resource/images/todo.png" />" />
 								</div>
@@ -80,13 +80,14 @@
 													</div>
 											</div>
 
+										<c:if test="${answer.user.id eq currentUserId }">
 											<div class="comment-delete-img" id="${answer.id}">
 												<img src="<c:url value="/resource/images/delete.png" />">
 											</div>
 											<div class="update-comment" id="${answer.id}">
 												<img src="<c:url value="/resource/images/edit.png" />">
 											</div>
-
+										</c:if>
 										</div>
 
 
