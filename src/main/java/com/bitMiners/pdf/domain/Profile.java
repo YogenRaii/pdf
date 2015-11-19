@@ -1,5 +1,6 @@
 package com.bitMiners.pdf.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,8 +13,14 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-public class Profile {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Profile implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private int id;
 	//@NotEmpty @NotNull

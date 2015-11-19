@@ -5,10 +5,17 @@ $(function () {
                 type: 'GET',
                 dataType : 'json',
                 contentType: "application/json;charset=utf-8",
-                success: function (output) {
-                	console.log(output);
+                success: function (profile) {
+                	console.log(profile);
+                	$("#user-detail").empty();
+                	var info ="<div><p>Name: "+profile.firstName+" "+profile.lastName+"</p>"+
+                	"<p>Occupation: "+profile.occupation+"</p>"+
+                	"<p>Address: "+profile.address+"</p>"+
+                	"<p>Date Of birth: "+profile.dateOfBirth+"</p>"+
+                	"</div>"
+                	$("#user-detail").append(info);
                 	$("#user-detail").dialog({
-//                		$("#user-detail").append();
+                		
                 		buttons:{
                 			"OK":function() {
                                 $( this ).dialog( "close" );
@@ -24,23 +31,4 @@ $(function () {
             
             });
     });
-
-    /*function createComment(text, itemid, commentid) {
-        var comment = '<div class="delete-comment-container" id="delete-comment-'+commentid+'">' +
-            '<div class="comment-image">'+
-            '<img src="resource/images/user.png">' +
-            '</div>'+
-            '<div class="comment-text-main">'+
-            
-            '<div class="comment-text">' + text + '</div>' +
-            '<div class="userinfo"> Answered by: '+username+'</div>'+
-            '</div>'+
-            '<div class="comment-delete-img" id="'+commentid+'">' +
-            '<img src="resource/images/delete.png">' +
-            '</div>' +
-            '<div class="update-question" id="'+commentid+'"><img src="resource/images/edit.png"></div>'+
-            '</div>';
-        $("#comments-"+itemid).append(comment);
-        $("#comment-textarea-"+itemid+" textarea").val('');
-    }*/
 });

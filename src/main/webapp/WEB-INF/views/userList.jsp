@@ -45,6 +45,6 @@
 	</div>
 </section>
 
-<div id="user-detail" title="User Detail" style="display: none">
+<div id="user-detail" title="User Detail" style="display: none;">
 	
 </div>
