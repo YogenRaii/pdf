@@ -16,7 +16,7 @@ import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.repository.UserRepository;
 import com.bitMiners.pdf.service.UserService;
 
-@Service //@Transactional
+@Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired

@@ -1,125 +1,121 @@
 package com.bitMiners.pdf.domain;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -9067986418908847017L;
-	@Id @GeneratedValue
-	private int id;
-	
-	@NotEmpty 
-	private String username;
-	@NotEmpty
-	@Size(min=4,max=10,message="Password must of 4 to 10 characters.")
-	private String password;
-	@NotEmpty @Email
-	private String email;
-	
-	private Date dateCreated;
-	
-	private String role;
-	
-	
-	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	private Profile profile;
-	
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="user")
-	private List<Question> questions;
-	
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="user")
-	private List<Answer> answers;
-	
-	public User(){}
+    /**
+     *
+     */
+    private static final long serialVersionUID = -9067986418908847017L;
+    @Id
+    @GeneratedValue
+    private int id;
 
-	public int getId() {
-		return id;
-	}
+    @NotEmpty
+    private String username;
+    @NotEmpty
+    @Size(min = 4, max = 10, message = "Password must of 4 to 10 characters.")
+    private String password;
+    @NotEmpty
+    @Email
+    private String email;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    private Date dateCreated;
 
-	public String getRole() {
-		return role;
-	}
+    private String role;
 
-	public void setRole(String role) {
-		this.role = role;
-	}
 
-	public String getUsername() {
-		return username;
-	}
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Profile profile;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Question> questions;
 
-	public String getPassword() {
-		return password;
-	}
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Answer> answers;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public User() {
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public Date getDateCreated() {
-		return dateCreated;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public Profile getProfile() {
-		return profile;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public List<Question> getQuestions() {
-		return questions;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public List<Answer> getAnswers() {
-		return answers;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
-	}
-	
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+
 }

@@ -1,19 +1,11 @@
 package com.bitMiners.pdf.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Profile implements Serializable{
@@ -108,6 +100,4 @@ public class Profile implements Serializable{
 				+ ", getAddress()=" + getAddress() + ", getOccupation()=" + getOccupation() + ", getGender()="
 				+ getGender() + ", getDateOfBirth()=" + getDateOfBirth() + "]";
 	}
-	
-
 }
