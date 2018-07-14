@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS pdf;
+
 INSERT INTO questionType (`id`,`name`,`description`) values (1,"C","C was originally developed by Dennis Ritchie between 1969 and 1973 at AT&T Bell Labs,[5] and used to re-implement the Unix operating system.");
 INSERT INTO questionType (`id`,`name`,`description`) values (2,"C++","It was designed with a bias toward system programming and embedded, resource-constrained and large systems, with performance, efficiency and flexibility of use as its design highlights.[3]");
 INSERT INTO questionType (`id`,`name`,`description`) values (3,"Spring","The Spring Framework is an application framework and inversion of control container for the Java platform. The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE platform. ");
@@ -29,4 +31,4 @@ INSERT INTO `answer`(`id`, `answerContent`, `dateCreated`, `question_id`, `user_
 
 INSERT INTO `answer`(`id`, `answerContent`, `dateCreated`, `question_id`, `user_id`) VALUES (2,"As Christophe L above mentioned, use the Hibernate module: https://github.com/FasterXML/jackson-datatype-hibernate -- otherwise Jackson has no way of knowing how to handle types specific to a third-party library.","2015-10-18 23:14:54",4,3);
 
-INSERT INTO `answer`(`id`, `answerContent`, `dateCreated`, `question_id`, `user_id`) VALUES (3,"Add the function addEdge(AbstractNode) to the AbstractNode interface. The implementation of this function can be getVertex().addEdge(that.getVertex) or whatever is appropriate to the implementing class.","2015-10-19 12:14:54",2,6);
+INSERT INTO `answer`(`id`, `answerContent`, `dateCreated`, `question_id`, `user_id`) VALUES (3,"Add the function addEdge(AbstractNode) to the AbstractNode interface. The implementation of this function can be getVertex().addEdge(that.getVertex) or whatever is appropriate to the implementing class.","2015-10-19 12:14:54",2,4);

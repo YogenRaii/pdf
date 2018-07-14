@@ -17,7 +17,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/pdf" />
+		<property name="url" value="jdbc:mysql://localhost:3306/pdf?createDatabaseIfNotExist=true" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -41,11 +41,12 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="properties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="connection.pool.size">1</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.import_files">populate.sql</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<!--<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.M‌​ultipleLinesSqlCommandExtractor</prop>-->
+				<!--<prop key="hibernate.hbm2ddl.import_files">populate.sql</prop>-->
 				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
 			</props>
 		</property>
