@@ -1,5 +1,6 @@
 package com.bitMiners.pdf.services.impl;
 
+import com.bitMiners.pdf.exceptions.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,13 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	public Integer updateAnswer(Answer answer) {
+		if (answerRepository.findOne(answer.getId()) == null) {
+			throw new DataException("Invalid answer id : " + answer.getId(), null);
+		}
 		return (answerRepository.update(answer))? 1:0;
 	}
 
 	public void deleteAnswer(int id) {
 		answerRepository.delete(id);
-		
 	}
-
 }

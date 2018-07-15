@@ -74,5 +74,4 @@ public class UserController {
     public @ResponseBody Profile getUserProfile(@PathVariable("id") int id) {
         return profileService.getProfile(id);
     }
-
 }

@@ -1,6 +1,7 @@
 package com.bitMiners.pdf.controllers;
 
 import com.bitMiners.pdf.domain.Answer;
+import com.bitMiners.pdf.exceptions.DataException;
 import com.bitMiners.pdf.services.AnswerService;
 import com.bitMiners.pdf.services.QuestionService;
 import com.bitMiners.pdf.services.UserService;
@@ -45,7 +46,10 @@ public class AnswerController {
     }
 
     @RequestMapping(value = "/edit/{answerId}", method = RequestMethod.POST)
-    public @ResponseBody Integer updateAnswer(@RequestBody Answer answer, @PathVariable("answerId") int id) {
+    public @ResponseBody Integer updateAnswer(@Valid @RequestBody Answer answer, BindingResult result, @PathVariable("answerId") int id) {
+        if (result.hasErrors()) {
+            throw new DataException("Invalid payload", result);
+        }
         answer.setId(id);
         return answerService.updateAnswer(answer);
     }
