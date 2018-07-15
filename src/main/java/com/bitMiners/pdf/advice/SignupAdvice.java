@@ -14,7 +14,7 @@ public class SignupAdvice {
     @Autowired
     private EmailService emailService;
 
-    @After("execution(* com.bitMiners.pdf.repository.repositoryImpl.UserRepositoryImpl.add(..))")
+    @After("execution(* com.bitMiners.pdf.repositories.impl.UserRepositoryImpl.add(..))")
     public void aopEmail(JoinPoint jp) {
         User user = (User) jp.getArgs()[0];
         emailService.sendEmail(user.getEmail(), "Registration info", "Registered Sucessfully to Programming discussion forum!! " +

@@ -3,7 +3,7 @@ package com.bitMiners.pdf.advice;
 import com.bitMiners.pdf.domain.Profile;
 import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.email.EmailService;
-import com.bitMiners.pdf.service.UserService;
+import com.bitMiners.pdf.services.UserService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,7 +18,7 @@ public class ProfileAdvice {
     @Autowired
     private UserService userService;
 
-    @After("execution(* com.bitMiners.pdf.repository.repositoryImpl.ProfileRepositoryImpl.update(..))")
+    @After("execution(* com.bitMiners.pdf.repositories.impl.ProfileRepositoryImpl.update(..))")
     public void UpdateProfileEmail(JoinPoint jp) {
         Profile profile = (Profile) jp.getArgs()[0];
         User user = userService.getUserById(profile.getId());
