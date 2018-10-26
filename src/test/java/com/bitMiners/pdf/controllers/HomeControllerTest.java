@@ -1,4 +1,4 @@
-package java.com.bitMiners.pdf.controllers;
+package com.bitMiners.pdf.controllers;
 
 public class HomeControllerTest {
 }
