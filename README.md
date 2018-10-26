@@ -16,6 +16,8 @@ Import project into any of IDE and deploy in any container (Tomcat would be the 
 http://localhost:8080
 ```
 
+### Testing
+
 User can search the questions and go into the details even without login. 
 
 ![Search Page](/docs/forum.png?raw=true "Forum Page")
@@ -27,3 +29,11 @@ Once registered user logs in, s/he can ask the question and answer the question.
 Application supports internationalization with Nepalese and Chinese language.
 
 ![I18N Page](/docs/i18n.png?raw=true)
+
+### Logging into the system
+```$xslt
+
+username : ironman
+
+password : ironman
+```
