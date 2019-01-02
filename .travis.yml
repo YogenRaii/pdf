@@ -1,0 +1,15 @@
+matrix:
+  include:
+    - language: java
+      sudo: false
+      jdk: oraclejdk8
+      install: true
+      script:
+        - mvn clean install
+
+branches:
+  only:
+  - develop
+  - master
+
+dist: trusty
