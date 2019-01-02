@@ -1,0 +1,48 @@
+##
+# The following Vagrant plugins are required:
+#
+# * vagrant-hostmanager
+# * vagrant-triggers
+#
+# Install them with the command line:
+#
+# vagrant plugin install vagrant-hostmanager vagrant-triggers
+#
+# The following Vagrant plugins are recommended:
+#
+# * vagrant-vbguest (if you are using the VirtualBox provider)
+# * vagrant-cachier
+#
+# Install them with the command line:
+#
+# vagrant plugin install vagrant-vbguest vagrant-cachier
+#
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "base"
+
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
+
+  sh = if RbConfig::CONFIG['host_os'] =~ /mswin|windows|cygwin/i
+    "bat"
+  else
+    "sh"
+  end
+  
+  # Services server
+  config.vm.define "pdf" do |pdf|
+    # configure provider
+    pdf.vm.provider "virtualbox" do |vb|
+      vb.memory = "4096"
+    end
+
+    pdf.vm.box = "ubuntu/trusty64"
+    pdf.vm.hostname = "pdf.local"
+    pdf.vm.network "private_network", ip: "192.168.100.11"
+    pdf.vm.provision "shell", path: "scripts/bootstrap_data.sh"
+    config.vm.synced_folder "data/", "/opt/data", create: true
+  end
+end
