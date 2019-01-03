@@ -3,18 +3,11 @@ package com.bitMiners.pdf.domain;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
 @Entity
+@Table(name = "question")
 public class Question {
 
 	@Id @GeneratedValue
@@ -26,7 +19,7 @@ public class Question {
     private Date dateCreated;
     
     @ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.EAGER)
-    @JoinColumn(name="questionType_id")
+    @JoinColumn(name="question_type_id")
     private QuestionType questionType;
     
     @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="question")
