@@ -16,6 +16,27 @@ Import project into any of IDE and deploy in any container (Tomcat would be the 
 http://localhost:8080
 ```
 
+### Vagrant Installation
+
+Go to `$PROJECT_DIR/vagrant` directory and install the plugins as defined in `Vagrantfile`.
+
+Once vagrant plugins are ready, run script to create artifacts:
+
+```
+./build_pdf.sh
+``` 
+
+Once, artifact is ready, bring up vagrant box with:
+
+```
+vagrant up pdf
+```
+
+Once vagrant box comes up, you should be able to access the service at:
+
+```
+http://pdf.local:8080/pdf
+```
 ### Testing
 
 User can search the questions and go into the details even without login. 
@@ -31,9 +52,19 @@ Application supports internationalization with Nepalese and Chinese language.
 ![I18N Page](/docs/i18n.png?raw=true)
 
 ### Logging into the system
+As Admin User
 ```$xslt
 
 username : ironman
 
 password : ironman
+```
+
+As General User,
+
+```$xslt
+
+username : rabi
+
+password : rabi
 ```
