@@ -7,7 +7,7 @@ echo "deb http://repo.mysql.com/apt/ubuntu/ trusty mysql-5.7" | tee -a /etc/apt/
 # Update server :)
 sudo apt-get update
 
-MYSQL_PASS='Admin123!'
+MYSQL_PASS='Admin123'
 
 debconf-set-selections <<< "mysql-community-server mysql-community-server/data-dir select ''"
 debconf-set-selections <<< "mysql-community-server mysql-community-server/root-pass password $MYSQL_PASS"
@@ -18,5 +18,5 @@ apt-get install -q -y --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::
 sudo sed -i 's/bind-address/#bind-address/g' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo service mysql restart
 
-mysql -u root --password="$MYSQL_PASS" -e "CREATE DATABASE motechquartz;"
-mysql -u root --password="$MYSQL_PASS" "motechquartz" < tables_quartz_mysql.sql
+#mysql -u root --password="$MYSQL_PASS" -e "CREATE DATABASE motechquartz;"
+#mysql -u root --password="$MYSQL_PASS" "motechquartz" < tables_quartz_mysql.sql
