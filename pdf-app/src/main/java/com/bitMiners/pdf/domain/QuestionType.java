@@ -1,13 +1,11 @@
 package com.bitMiners.pdf.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "question_type")
 public class QuestionType {
 	@Id
 	@GeneratedValue
