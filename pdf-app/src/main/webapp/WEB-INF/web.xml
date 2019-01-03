@@ -23,9 +23,9 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-       		/WEB-INF/spring/context/applicationContext.xml
- 			/WEB-INF/spring/context/security-context.xml 
- 			/WEB-INF/email.xml
+			/WEB-INF/spring/context/applicationContext.xml
+			/WEB-INF/spring/context/security-context.xml
+			/WEB-INF/email.xml
  		</param-value>
 	</context-param>
 	
@@ -54,7 +54,7 @@
 	
 	<filter>
     	<filter-name>SpringOpenSessionInViewFilter</filter-name>
-    	<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+    	<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
     </filter>
     
     <filter-mapping>
