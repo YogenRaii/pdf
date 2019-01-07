@@ -22,9 +22,9 @@
 		<property name="password" value="Admin123" />
 	</bean>
 
-	<!-- Hibernate 4 Annotation SessionFactory Bean definition -->
+	<!-- Hibernate 5 Annotation SessionFactory Bean definition -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties" ref="hibernateProperties" />
 		<property name="annotatedClasses">
@@ -53,8 +53,7 @@
 	</bean>
 
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
 </beans>
