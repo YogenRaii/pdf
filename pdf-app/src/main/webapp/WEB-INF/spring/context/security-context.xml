@@ -76,6 +76,6 @@
 
     <bean id="bCryptPasswordEncoder"
           class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-        <constructor-arg value="100"/>
+        <constructor-arg value="10"/>
     </bean>
 </beans>
