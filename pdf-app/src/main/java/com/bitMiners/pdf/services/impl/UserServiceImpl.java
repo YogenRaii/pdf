@@ -33,13 +33,8 @@ public class UserServiceImpl implements UserService {
             return false;
         } else {
             //set authorization
-            List<GrantedAuthority> authority = new ArrayList<GrantedAuthority>();
-            GrantedAuthority grantedAuthority = new GrantedAuthority() {
-
-                public String getAuthority() {
-                    return user.getRole();
-                }
-            };
+            List<GrantedAuthority> authority = new ArrayList<>();
+            GrantedAuthority grantedAuthority = (GrantedAuthority) user::getRole;
             authority.add(grantedAuthority);
 
             Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), authority);
