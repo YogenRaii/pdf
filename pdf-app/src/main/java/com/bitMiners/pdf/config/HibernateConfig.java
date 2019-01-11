@@ -20,7 +20,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
         factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-        factoryBean.setAnnotatedPackages("com.bitMiners.pdf.domain");
+        factoryBean.setPackagesToScan("com.bitMiners.pdf.domain");
         return factoryBean;
     }
 
