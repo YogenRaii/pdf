@@ -24,7 +24,6 @@ public class User implements Serializable {
     @NotEmpty
     private String username;
     @NotEmpty
-    @Size(min = 4, max = 10, message = "Password must of 4 to 10 characters.")
     private String password;
     @NotEmpty
     @Email
