@@ -5,20 +5,29 @@ INSERT INTO question_type (`id`,`name`,`description`) values (2,"C++","It was de
 INSERT INTO question_type (`id`,`name`,`description`) values (3,"Spring","The Spring Framework is an application framework and inversion of control container for the Java platform. The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE platform. ");
 INSERT INTO question_type (`id`,`name`,`description`) values (4,"Javascript","Despite some naming, syntactic, and standard library similarities, JavaScript and Java are otherwise unrelated and have very different semantics. ");
 
+INSERT INTO `authority`(`name`, `id`) VALUES ('ROLE_ADMIN', 1);
+INSERT INTO `authority`(`name`, `id`) VALUES ('ROLE_USER', 2);
+
+INSERT INTO `user_authority`(`authority_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `user_authority`(`authority_id`, `user_id`) VALUES (2, 2);
+INSERT INTO `user_authority`(`authority_id`, `user_id`) VALUES (2, 3);
+INSERT INTO `user_authority`(`authority_id`, `user_id`) VALUES (1, 4);
+INSERT INTO `user_authority`(`authority_id`, `user_id`) VALUES (2, 5);
+
 INSERT INTO `profile`(`id`, `address`, `dateOfBirth`, `firstName`, `gender`, `lastName`, `occupation`) VALUES (1,"Iowa,USA",'1993-11-15 22:14:54',"Yogen","M","Rai","Engineer");
-INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `role`,`profile_id`) VALUES (1,'ironman','$2a$10$jXlure/BaO7K9WSQ8AMiOu3Ih3Am3kmmnVkWWHZEcQryZ8QPO3FgC','ironman@gmail.com','2015-11-15 22:14:54','admin',1);
+INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `profile_id`) VALUES (1,'ironman','$2a$10$jXlure/BaO7K9WSQ8AMiOu3Ih3Am3kmmnVkWWHZEcQryZ8QPO3FgC','ironman@gmail.com','2015-11-15 22:14:54',1);
 
 INSERT INTO `profile`(`id`, `address`, `dateOfBirth`, `firstName`, `gender`, `lastName`, `occupation`) VALUES (2,"Kathmandu,Nepal",'1992-11-15 22:14:54',"Rabi","M","Maharjan","Student");
-INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `role`,`profile_id`) VALUES (2,'rabi','$2a$10$0tFJKcOV/Io6I3vWs9/Tju8OySoyMTpGAyO0zaAOCswMbpfma0BSK','rabi@gmail.com','2015-10-15 22:14:54','general',2);
+INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `profile_id`) VALUES (2,'rabi','$2a$10$0tFJKcOV/Io6I3vWs9/Tju8OySoyMTpGAyO0zaAOCswMbpfma0BSK','rabi@gmail.com','2015-10-15 22:14:54',2);
 
 INSERT INTO `profile`(`id`, `address`, `dateOfBirth`, `firstName`, `gender`, `lastName`, `occupation`) VALUES (3,"Indonesia",'1992-11-15 22:14:54',"John","M","Rockie","Teacher");
-INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `role`,`profile_id`) VALUES (3,'rockie','$2a$10$WILylGNCM9SxeOKL2wKT9ukUlt3XEjeo1ULn/qB66duZokcOGT.G.','rockie92@gmail.com','2015-10-16 22:14:54','general',3);
+INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `profile_id`) VALUES (3,'rockie','$2a$10$WILylGNCM9SxeOKL2wKT9ukUlt3XEjeo1ULn/qB66duZokcOGT.G.','rockie92@gmail.com','2015-10-16 22:14:54',3);
 
 INSERT INTO `profile`(`id`, `address`, `dateOfBirth`, `firstName`, `gender`, `lastName`, `occupation`) VALUES (4,"Mumbai, India",'1990-11-15 22:14:54',"Rita","F","Khaling","Engineer");
-INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `role`,`profile_id`) VALUES (4,'rita','$2a$10$ANuESyLFe1PgzWQkq1Y1IeoWWYEtDa/47bmmig1di6CVZOwe7MGh6','khaling.rita.92@gmail.com','2015-10-12 22:14:54','admin',4);
+INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `profile_id`) VALUES (4,'rita','$2a$10$ANuESyLFe1PgzWQkq1Y1IeoWWYEtDa/47bmmig1di6CVZOwe7MGh6','khaling.rita.92@gmail.com','2015-10-12 22:14:54',4);
 
 INSERT INTO `profile`(`id`, `address`, `dateOfBirth`, `firstName`, `gender`, `lastName`, `occupation`) VALUES (5,"NULL",'1992-11-15 22:14:54',"NULL","M","NULL","NULL");
-INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`, `role`,`profile_id`) VALUES (5,'manish','$2a$10$jr7iN4WedV/gW7FD.jov.OrpfhBpxsPMiss3R4ZmGjNqLJgR.2ZRC','manish@gmail.com','2015-10-13 22:14:54','general',5);
+INSERT INTO `user` (`id`, `username`, `password`, `email`,`dateCreated`,`profile_id`) VALUES (5,'manish','$2a$10$jr7iN4WedV/gW7FD.jov.OrpfhBpxsPMiss3R4ZmGjNqLJgR.2ZRC','manish@gmail.com','2015-10-13 22:14:54',5);
 
 INSERT INTO `question`(`id`, `dateCreated`, `heading`, `questionContent`, `question_type_id`, `user_id`) VALUES (1,"2015-10-15 22:14:54","Getting Null Pointer exception","While doing depedency injection, I'm getting null pointer exception. What could be the reason?",3,3);
 
