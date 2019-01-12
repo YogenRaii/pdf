@@ -50,7 +50,7 @@ public class UserRepositoryImpl implements UserRepository {
     @SuppressWarnings("unchecked")
     public List<User> getAllAdmins() {
         Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.role=:role");
-        query.setParameter("role", "admin");
+        query.setParameter("role", "ROLE_ADMIN");
         return query.list();
     }
 }

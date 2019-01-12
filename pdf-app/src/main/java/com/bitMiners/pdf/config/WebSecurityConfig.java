@@ -50,14 +50,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/questionTypes/admin", "/users/adminList", "/users/addAdminForm").hasRole("admin")
+                .authorizeRequests().antMatchers("/questionTypes/admin", "/users/adminList", "/users/addAdminForm").hasRole("ADMIN")
                 .and()
-                .authorizeRequests().antMatchers("/wallPage", "/questions/add", "/questionTypes", "profile/*").hasAnyRole("admin", "general")
+                .authorizeRequests().antMatchers("/wallPage", "/questions/add", "/questionTypes", "/profile/*").hasAnyRole("ADMIN", "USER")
                 .and()
                 .authorizeRequests().antMatchers("/login", "/resource/**").permitAll()
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
-                .loginProcessingUrl("/postLogin").permitAll()
+                .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password").permitAll()
+                .loginProcessingUrl("/postLogin")
+                .successForwardUrl("/postLogin")
                 .and()
                 .logout().logoutUrl("/doLogout").logoutSuccessUrl("/logout").permitAll()
                 .and()

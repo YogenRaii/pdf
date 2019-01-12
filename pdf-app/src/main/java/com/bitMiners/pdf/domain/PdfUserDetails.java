@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class PdfUserDetails implements UserDetails {
     private User user;
@@ -16,7 +17,7 @@ public class PdfUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("admin"));
+        return user.getAuthorities().stream().map(authority -> new SimpleGrantedAuthority(authority.getName().toString())).collect(Collectors.toList());
     }
 
     public int getId() {
@@ -53,7 +54,7 @@ public class PdfUserDetails implements UserDetails {
         return true;
     }
 
-    public User getPdfUserDetails() {
+    public User getUserDetails() {
         return user;
     }
 }
