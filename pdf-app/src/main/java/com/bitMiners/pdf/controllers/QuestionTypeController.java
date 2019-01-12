@@ -34,17 +34,17 @@ public class QuestionTypeController {
             return "addQuestionType";
         }
         questionTypeService.saveQuestionType(questionType);
-        return "redirect:/questionTypes/admin";
+        return "redirect:/questionTypes";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public @ResponseBody Integer deleteQuestionType(@PathVariable("id") int id) {
+    public @ResponseBody Integer deleteQuestionType(@PathVariable("id") Long id) {
         questionTypeService.deleteQuestionType(id);
         return 1;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PATCH)
-    public @ResponseBody Integer editQuestionType(@RequestBody QuestionType questionType, @PathVariable("id") int id) {
+    public @ResponseBody Long editQuestionType(@RequestBody QuestionType questionType, @PathVariable("id") Long id) {
         questionType.setId(id);
         return questionTypeService.updateQuestionType(questionType);
     }

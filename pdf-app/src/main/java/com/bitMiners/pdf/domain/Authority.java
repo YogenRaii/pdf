@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     private AuthorityType name;

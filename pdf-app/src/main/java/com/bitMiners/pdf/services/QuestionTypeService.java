@@ -1,16 +1,16 @@
 package com.bitMiners.pdf.services;
 
-import java.util.List;
-
 import com.bitMiners.pdf.domain.QuestionType;
+
+import java.util.List;
 
 public interface QuestionTypeService {
 
-	Integer saveQuestionType(QuestionType questionType);
-	
-	Integer updateQuestionType(QuestionType questionType);
-	
-	void deleteQuestionType(int id);
-	
-	List<QuestionType> getAllQuestionTypes();
+    Long saveQuestionType(QuestionType questionType);
+
+    Long updateQuestionType(QuestionType questionType);
+
+    void deleteQuestionType(Long id);
+
+    List<QuestionType> getAllQuestionTypes();
 }

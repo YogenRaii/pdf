@@ -1,34 +1,32 @@
 package com.bitMiners.pdf.services.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.bitMiners.pdf.domain.QuestionType;
 import com.bitMiners.pdf.repositories.QuestionTypeRepository;
 import com.bitMiners.pdf.services.QuestionTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class QuestionTypeServiceImpl implements QuestionTypeService {
 
-	@Autowired
-	private QuestionTypeRepository questionTypeRepository;
-	
-	public Integer saveQuestionType(QuestionType questionType) {
-		return questionTypeRepository.add(questionType);
-	}
+    @Autowired
+    private QuestionTypeRepository questionTypeRepository;
 
-	public Integer updateQuestionType(QuestionType questionType) {
-		return questionTypeRepository.update(questionType)?1:0;
-	}
+    public Long saveQuestionType(QuestionType questionType) {
+        return questionTypeRepository.add(questionType);
+    }
 
-	public void deleteQuestionType(int id) {
-		 questionTypeRepository.delete(id);
-		
-	}
+    public Long updateQuestionType(QuestionType questionType) {
+        return questionTypeRepository.update(questionType) ? 1L : 0;
+    }
 
-	public List<QuestionType> getAllQuestionTypes() {
-		return questionTypeRepository.findAll();
-	}
+    public void deleteQuestionType(Long id) {
+        questionTypeRepository.delete(id);
+    }
 
+    public List<QuestionType> getAllQuestionTypes() {
+        return questionTypeRepository.findAll();
+    }
 }

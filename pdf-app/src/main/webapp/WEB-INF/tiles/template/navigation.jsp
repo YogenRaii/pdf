@@ -36,7 +36,7 @@
 </security:authorize>
 
 <security:authorize access="isAuthenticated()">
-    <li><a href="<spring:url value="/logout"/>"><spring:message
+    <li><a href="<spring:url value="/doLogout"/>"><spring:message
             code="navigation.logout.label"/></a></li>
 </security:authorize>
 

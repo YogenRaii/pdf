@@ -2,8 +2,8 @@ package com.bitMiners.pdf.repositories.impl;
 
 import com.bitMiners.pdf.domain.QuestionType;
 import com.bitMiners.pdf.repositories.QuestionTypeRepository;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,11 +17,11 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Integer add(QuestionType questionType) {
-        return (Integer) sessionFactory.getCurrentSession().save(questionType);
+    public Long add(QuestionType questionType) {
+        return (Long) sessionFactory.getCurrentSession().save(questionType);
     }
 
-    public void delete(Integer id) {
+    public void delete(Long id) {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from QuestionType q where q.id=:id");
         query.setParameter("id", id);
         query.executeUpdate();
@@ -35,15 +35,12 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
         return true;
     }
 
-    public QuestionType findOne(Integer id) {
+    public QuestionType findOne(Long id) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @SuppressWarnings("unchecked")
     public List<QuestionType> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("from QuestionType").list();
+        return sessionFactory.getCurrentSession().createQuery("from QuestionType", QuestionType.class).list();
     }
-
-
 }
