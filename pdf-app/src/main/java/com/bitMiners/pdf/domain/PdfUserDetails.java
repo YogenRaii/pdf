@@ -1,11 +1,11 @@
 package com.bitMiners.pdf.domain;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 public class PdfUserDetails implements UserDetails {
     private User user;
@@ -16,10 +16,7 @@ public class PdfUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        GrantedAuthority grantedAuthority = (GrantedAuthority) user::getRole;
-        authorities.add(grantedAuthority);
-        return authorities;
+        return Collections.singletonList(new SimpleGrantedAuthority("admin"));
     }
 
     public int getId() {
@@ -54,5 +51,9 @@ public class PdfUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User getPdfUserDetails() {
+        return user;
     }
 }
