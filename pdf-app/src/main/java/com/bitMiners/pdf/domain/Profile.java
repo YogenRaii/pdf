@@ -7,98 +7,101 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "profile")
-public class Profile implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue
-	private int id;
-	private String firstName;
-	private String lastName;
-	//@NotEmpty @NotNull
-	private String address;
-	private String occupation;
-	private String gender;
-	//@NotEmpty 
-	private String portrait;
+public class Profile implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    //@NotEmpty @NotNull
+    private String address;
+    private String occupation;
+    private String gender;
+    //@NotEmpty
+    private String portrait;
 
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dateOfBirth;
-	
-	public Profile(){}
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dateOfBirth;
 
-	public int getId() {
-		return id;
-	}
+    public Profile() {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getOccupation() {
-		return occupation;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
-	}
+    public String getOccupation() {
+        return occupation;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	
-	public String getPortrait() {
-		return portrait;
-	}
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	public void setPortrait(String portrait) {
-		this.portrait = portrait;
-	}
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	@Override
-	public String toString() {
-		return "Profile [getId()=" + getId() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
-				+ ", getAddress()=" + getAddress() + ", getOccupation()=" + getOccupation() + ", getGender()="
-				+ getGender() + ", getDateOfBirth()=" + getDateOfBirth() + "]";
-	}
+    public String getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
+    }
+
+    @Override
+    public String toString() {
+        return "Profile [getId()=" + getId() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+                + ", getAddress()=" + getAddress() + ", getOccupation()=" + getOccupation() + ", getGender()="
+                + getGender() + ", getDateOfBirth()=" + getDateOfBirth() + "]";
+    }
 }

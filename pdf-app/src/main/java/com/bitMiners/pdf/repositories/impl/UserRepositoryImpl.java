@@ -2,9 +2,9 @@ package com.bitMiners.pdf.repositories.impl;
 
 import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.repositories.UserRepository;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +24,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     public void delete(Integer id) {
         // TODO Auto-generated method stub
-
     }
 
     public boolean update(User user) {
@@ -33,24 +32,21 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     public User findOne(Integer id) {
-        return (User) sessionFactory.getCurrentSession().get(User.class, id);
+        return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
-    @SuppressWarnings("unchecked")
     public List<User> findAll() {
-        Query query = sessionFactory.getCurrentSession().createQuery("from User");
-        return query.list();
+        return sessionFactory.getCurrentSession().createQuery("FROM User", User.class).list();
     }
 
     public User getUserByUsername(String username) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.username=:username");
+        Query<User> query = sessionFactory.getCurrentSession().createQuery("FROM User u where u.username=:username", User.class);
         query.setParameter("username", username);
-        return (User) query.uniqueResult();
+        return query.uniqueResult();
     }
 
-    @SuppressWarnings("unchecked")
     public List<User> getAllAdmins() {
-        SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery("SELECT * from User u where id in (select user_id from user_authority where authority_id=(select id from authority where name=:role))");
+        NativeQuery<User> query = sessionFactory.getCurrentSession().createNativeQuery("SELECT * FROM User u where id in (select user_id FROM user_authority where authority_id=(select id FROM authority where name=:role))");
         query.setParameter("role", "ROLE_ADMIN");
         query.addEntity(User.class);
         return query.list();

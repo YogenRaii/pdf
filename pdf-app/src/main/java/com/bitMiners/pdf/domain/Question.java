@@ -10,8 +10,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "question")
 public class Question {
 
-	@Id @GeneratedValue
-	private int id;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	@NotEmpty
 	private String heading;
 	@NotEmpty @Lob

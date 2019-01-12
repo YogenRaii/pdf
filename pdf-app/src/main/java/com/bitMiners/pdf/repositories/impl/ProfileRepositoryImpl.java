@@ -31,11 +31,10 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     }
 
     public Profile findOne(Integer id) {
-        return (Profile) sessionFactory.getCurrentSession().load(Profile.class, id);
+        return sessionFactory.getCurrentSession().load(Profile.class, id);
     }
 
     public List<Profile> findAll() {
         return null;
     }
-
 }

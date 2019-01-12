@@ -2,8 +2,8 @@ package com.bitMiners.pdf.repositories.impl;
 
 import com.bitMiners.pdf.domain.Question;
 import com.bitMiners.pdf.repositories.QuestionRepository;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +25,9 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from Question q where q.id=:id");
         query.setParameter("id", id);
         query.executeUpdate();
-
     }
 
     public boolean update(Question question) {
-
         Query query = sessionFactory.getCurrentSession().createQuery("update Question q set q.questionContent=:content where q.id=:id");
         query.setParameter("content", question.getQuestionContent());
         query.setParameter("id", question.getId());
@@ -38,13 +36,10 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     }
 
     public Question findOne(Integer id) {
-        return (Question) sessionFactory.getCurrentSession().get(Question.class, id);
+        return sessionFactory.getCurrentSession().get(Question.class, id);
     }
 
-    @SuppressWarnings("unchecked")
     public List<Question> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("from Question").list();
+        return sessionFactory.getCurrentSession().createQuery("from Question", Question.class).list();
     }
-
-
 }
