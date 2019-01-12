@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    public boolean isCorrectUsernameAndPassword(String username, String password) {
+/*    public boolean isCorrectUsernameAndPassword(String username, String password) {
         final User user = userRepository.getUserByUsername(username);
         if (user == null) {
             return false;
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
             return user.getPassword().equals(password);
         }
-    }
+    }*/
 
     public User getUserByUsername(String username) {
         return userRepository.getUserByUsername(username);

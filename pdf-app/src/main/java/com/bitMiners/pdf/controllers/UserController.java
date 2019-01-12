@@ -1,7 +1,9 @@
 package com.bitMiners.pdf.controllers;
 
+import com.bitMiners.pdf.domain.Authority;
 import com.bitMiners.pdf.domain.Profile;
 import com.bitMiners.pdf.domain.User;
+import com.bitMiners.pdf.domain.types.AuthorityType;
 import com.bitMiners.pdf.services.ProfileService;
 import com.bitMiners.pdf.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/users")
@@ -42,7 +46,11 @@ public class UserController {
         }
         user.setProfile(new Profile());
         user.setDateCreated(new Date());
-        user.setRole("general");
+
+        // set user authorities
+        Set<Authority> authorities = Collections.singleton(new Authority(AuthorityType.ROLE_USER));
+        user.setAuthorities(authorities);
+
         userService.addUser(user);
         return "redirect:/users/list";
     }
@@ -58,7 +66,11 @@ public class UserController {
     public String addAdmin(@ModelAttribute("user") User user) {
         user.setProfile(new Profile());
         user.setDateCreated(new Date());
-        user.setRole("admin");
+
+        // set admin authorities
+        Set<Authority> authorities = Collections.singleton(new Authority(AuthorityType.ROLE_USER));
+        user.setAuthorities(authorities);
+
         userService.addUser(user);
         return "redirect:/users/adminList";
     }

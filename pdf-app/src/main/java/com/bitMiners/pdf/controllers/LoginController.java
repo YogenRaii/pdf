@@ -1,9 +1,12 @@
 package com.bitMiners.pdf.controllers;
 
+import com.bitMiners.pdf.domain.PdfUserDetails;
+import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.services.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,21 +50,23 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
-    public String postLogin(String username, String password, Model model, HttpSession session) {
-        log.info("postLogin()-> username : {}", username);
-        if (username == null || password == null) {
-            model.addAttribute("message", "None of field can be empty");
-        }
-        boolean isCorrect = userService.isCorrectUsernameAndPassword(username, password);
-        if (!isCorrect) {
-            log.info("Login failure for user: {}", username);
-            model.addAttribute("message", "Username or password didn't matched");
-            return "login";
-        }
-        log.info("Login success for user: {}", username);
-        model.addAttribute("currentUserId", userService.getUserByUsername(username).getId());
-        model.addAttribute("currentUser", username);
-        session.setAttribute("userId", userService.getUserByUsername(username).getId());
+    public String postLogin(Model model, HttpSession session) {
+        log.info("postLogin()");
+
+        // read principal out of security context and set it to session
+        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        validatePrinciple(authentication.getPrincipal());
+        User loggedInUser = ((PdfUserDetails) authentication.getPrincipal()).getUserDetails();
+
+        model.addAttribute("currentUserId", loggedInUser.getId());
+        model.addAttribute("currentUser", loggedInUser.getUsername());
+        session.setAttribute("userId", loggedInUser.getId());
         return "redirect:/wallPage";
+    }
+
+    private void validatePrinciple(Object principal) {
+        if (principal == null || !(principal instanceof PdfUserDetails)) {
+            throw new  IllegalArgumentException("Principal can not be null!");
+        }
     }
 }

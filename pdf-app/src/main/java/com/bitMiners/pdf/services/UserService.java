@@ -14,5 +14,5 @@ public interface UserService {
 	
 	User getUserById(int id);
 	List<User> getAllAdmins();
-	boolean isCorrectUsernameAndPassword(String username, String password);
+//	boolean isCorrectUsernameAndPassword(String username, String password);
 }
