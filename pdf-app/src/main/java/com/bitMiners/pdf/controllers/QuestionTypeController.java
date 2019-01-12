@@ -23,14 +23,6 @@ public class QuestionTypeController {
         return "questionTypes";
     }
 
-    @RequestMapping("/admin")
-//	@PreAuthorize("hasRole('admin')")
-    public String getAllQuestionTypesForAdmin(Model model) {
-        model.addAttribute("questionTypes", questionTypeService.getAllQuestionTypes());
-        model.addAttribute("role", "admin");
-        return "questionTypes";
-    }
-
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addQuestionTypeForm(@ModelAttribute("questionType") QuestionType questionType) {
         return "addQuestionType";

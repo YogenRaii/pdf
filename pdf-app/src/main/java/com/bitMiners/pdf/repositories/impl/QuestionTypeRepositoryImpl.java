@@ -25,7 +25,6 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from QuestionType q where q.id=:id");
         query.setParameter("id", id);
         query.executeUpdate();
-
     }
 
     public boolean update(QuestionType questionType) {

@@ -27,24 +27,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-/*    public boolean isCorrectUsernameAndPassword(String username, String password) {
-        final User user = userRepository.getUserByUsername(username);
-        if (user == null) {
-            return false;
-        } else {
-            //set authorization
-            List<GrantedAuthority> authority = new ArrayList<>();
-            GrantedAuthority grantedAuthority = (GrantedAuthority) user::getRole;
-            authority.add(grantedAuthority);
-
-            Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), authority);
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            return user.getPassword().equals(password);
-        }
-    }*/
-
     public User getUserByUsername(String username) {
         return userRepository.getUserByUsername(username);
     }

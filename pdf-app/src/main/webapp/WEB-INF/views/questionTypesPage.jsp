@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="g" uri="/WEB-INF/date-format-tag.tld"%>
 
 <script
@@ -20,20 +20,19 @@
 
 	<div class="panel-body">
 		<div class="row">
-		<c:if test="${role eq 'admin' }">
+		<c:if test="${role eq 'ROLE_ADMIN' }">
 		<p><a href='<spring:url value="/questionTypes/add"></spring:url>'>Add New Question Type</a> </p> </c:if>
 			<c:forEach items="${questionTypes}" var="questionType">
 				<div class="delete-questionType-container"
 					id="delete-questionType-${questionType.id}">
-					<c:if test="${role eq 'admin' }">
+					<security:authorize access="hasRole('ADMIN')">
 						<div class="questionType-delete-img" id="${questionType.id}">
 							<img src="<c:url value="/resource/images/delete.png" />">
 						</div>
 						<div class="update-questionType" id="${questionType.id}">
 							<img src="<c:url value="/resource/images/edit.png" />">
 						</div>
-
-					</c:if>
+					</security:authorize>
 					
 					<div class="questionType-image">
 						<img src="<c:url value="/resource/images/todo.png" />">
