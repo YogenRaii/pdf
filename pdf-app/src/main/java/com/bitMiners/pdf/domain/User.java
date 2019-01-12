@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -18,13 +17,13 @@ public class User implements Serializable {
      */
     private static final long serialVersionUID = -9067986418908847017L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotEmpty
+    @Column(nullable = false, unique = true)
     private String username;
     @NotEmpty
-    @Size(min = 4, max = 10, message = "Password must of 4 to 10 characters.")
     private String password;
     @NotEmpty
     @Email

@@ -53,5 +53,4 @@ public class UserRepositoryImpl implements UserRepository {
         query.setParameter("role", "admin");
         return query.list();
     }
-
 }
