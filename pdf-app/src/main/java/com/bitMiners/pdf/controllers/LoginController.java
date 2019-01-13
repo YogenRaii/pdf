@@ -2,10 +2,8 @@ package com.bitMiners.pdf.controllers;
 
 import com.bitMiners.pdf.domain.PdfUserDetails;
 import com.bitMiners.pdf.domain.User;
-import com.bitMiners.pdf.services.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,17 +20,14 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     private static final Logger log = LogManager.getLogger(LoginController.class);
 
-    @Autowired
-    private UserService userService;
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
-    public String loginerror(Model model) {
-
+    @RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
+    public String loginError(Model model) {
+        log.info("Login attempt failed");
         model.addAttribute("error", "true");
         return "login";
     }
@@ -43,7 +38,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(Model model, SessionStatus session) {
+    public String logout(SessionStatus session) {
         SecurityContextHolder.getContext().setAuthentication(null);
         session.setComplete();
         return "redirect:/welcome";
@@ -65,7 +60,7 @@ public class LoginController {
     }
 
     private void validatePrinciple(Object principal) {
-        if (principal == null || !(principal instanceof PdfUserDetails)) {
+        if (!(principal instanceof PdfUserDetails)) {
             throw new  IllegalArgumentException("Principal can not be null!");
         }
     }

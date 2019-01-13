@@ -4,11 +4,9 @@
 <%@ taglib prefix="g" uri="/WEB-INF/date-format-tag.tld" %>
 
 <link rel="stylesheet" href="<spring:url value="/resource/css/wall.css" />"/>
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<link rel="stylesheet"
-      href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script src="<spring:url value="/resource/js/wall.js" />" type="text/javascript"></script>
 

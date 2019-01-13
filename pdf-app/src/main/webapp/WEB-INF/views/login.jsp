@@ -3,21 +3,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div>
-
     <div class="panel-body">
-        <c:if test="${not empty error}">
-            <div class="alert alert-danger">
-                <spring:message
-                        code="AbstractUserDetailsAuthenticationProvider.badCredentials"/>
-                <br/>
-            </div>
-        </c:if>
         <form action="doLogin" method="post">
             <fieldset>
                 <legend>Please sign in</legend>
 
-                <form:errors path="*" cssClass="alert alert-danger" element="div"/>
-                <p style="color: red;">${message}</p>
+                <c:if test="${not empty error}">
+                    <div class="alert alert-danger">
+                        <spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials"/>
+                        <br/>
+                    </div>
+                </c:if>
                 <div class="form-group">
                     <input class="form:input-large" placeholder="User Name"
                            name='username' type="text">
