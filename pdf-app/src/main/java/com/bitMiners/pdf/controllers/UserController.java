@@ -68,7 +68,7 @@ public class UserController {
         user.setDateCreated(new Date());
 
         // set admin authorities
-        Set<Authority> authorities = Collections.singleton(new Authority(AuthorityType.ROLE_USER));
+        Set<Authority> authorities = Collections.singleton(new Authority(AuthorityType.ROLE_ADMIN));
         user.setAuthorities(authorities);
 
         userService.addUser(user);
