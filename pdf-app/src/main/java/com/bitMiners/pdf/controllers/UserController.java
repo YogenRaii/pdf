@@ -44,6 +44,11 @@ public class UserController {
         if (result.hasErrors()) {
             return "addUser";
         }
+
+        User dbUser = this.userService.getUserByUsername(user.getUsername());
+
+        if (dbUser != null) return "redirect:/signupForm";
+
         user.setProfile(new Profile());
         user.setDateCreated(new Date());
 
@@ -52,7 +57,7 @@ public class UserController {
         user.setAuthorities(authorities);
 
         userService.addUser(user);
-        return "redirect:/users/list";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/addAdminForm", method = RequestMethod.GET)
