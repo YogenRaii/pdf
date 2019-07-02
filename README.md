@@ -16,6 +16,17 @@ Import project into any of IDE and deploy in any container (Tomcat would be the 
 http://localhost:8080
 ```
 
+### Spring Boot Run
+Go to `$PROJECT_DIR/pdf-app` directory and run:
+
+```
+mvn clean spring-boot:run
+```
+With this, Spring Boot starts embedded container at port 8081. So, service can be reached at:
+```
+http://localhost:8080
+```
+
 ### Vagrant Installation
 
 Go to `$PROJECT_DIR/vagrant` directory and install the plugins as defined in `Vagrantfile`.
