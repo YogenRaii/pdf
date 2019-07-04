@@ -1,11 +1,16 @@
 package com.bitMiners.pdf.controllers;
 
 import com.bitMiners.pdf.domain.Question;
+import com.bitMiners.pdf.exceptions.DataException;
 import com.bitMiners.pdf.services.QuestionService;
 import com.bitMiners.pdf.services.QuestionTypeService;
 import com.bitMiners.pdf.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +22,8 @@ import java.util.Date;
 
 @Controller
 public class QuestionController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(QuestionController.class);
+
     @Autowired
     private QuestionService questionService;
 
@@ -51,7 +58,7 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/questions/addQuestion", method = RequestMethod.POST)
-    public String addQuestion(@Valid @ModelAttribute("question") Question question, BindingResult result,HttpSession session) {
+    public String addQuestion(@Valid @ModelAttribute("question") Question question, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
             return "addQuestion";
         }
@@ -64,16 +71,19 @@ public class QuestionController {
         return "redirect:/wallPage";
     }
 
-    @RequestMapping(value = "/questions/delete/{questionId}", method = RequestMethod.GET)
-    public @ResponseBody Integer deleteQuestion(@PathVariable("questionId") int id) {
+    @RequestMapping(value = "/questions/{questionId}", method = RequestMethod.DELETE)
+    public @ResponseBody void deleteQuestion(@PathVariable("questionId") int id) {
         questionService.deleteQuestionById(id);
-        return 1;
     }
 
-    @RequestMapping(value = "/questions/edit/{questionId}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Integer editQuestion(@RequestBody Question question, @PathVariable("questionId") int id) {
+    @RequestMapping(value = "/questions/{questionId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Question editQuestion(@RequestBody @Valid Question question, BindingResult data, @PathVariable("questionId") int id) {
+        LOGGER.info("editQuestion(): id -> {}", id);
+        if (data.hasErrors()) {
+            throw new DataException("Invalid Data!", data.getFieldErrors());
+        }
+        LOGGER.info("body {}", question);
         question.setId(id);
-        questionService.updateQuestion(question);
-        return 1;
+        return questionService.updateQuestion(question);
     }
 }

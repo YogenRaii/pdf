@@ -26,9 +26,9 @@ public class UserRepositoryImpl implements UserRepository {
         // TODO Auto-generated method stub
     }
 
-    public boolean update(User user) {
+    public User update(User user) {
         // TODO Auto-generated method stub
-        return false;
+        return null;
     }
 
     @Override

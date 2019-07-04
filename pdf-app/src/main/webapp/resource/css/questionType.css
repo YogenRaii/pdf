@@ -39,7 +39,7 @@ span {
 .update-questionType img {
 	width: 20px;
 }
-textarea#questionType {
+textarea#questionType-content {
 	width: 315px;
 	height: 130px;
 }

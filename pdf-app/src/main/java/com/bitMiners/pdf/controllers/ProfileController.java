@@ -101,5 +101,4 @@ public class ProfileController {
         profileService.updateProfile(profile);
         return "redirect:/profile/" + id;
     }
-
 }

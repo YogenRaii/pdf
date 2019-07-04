@@ -6,7 +6,7 @@ public interface AnswerService {
 
 	Integer saveAnswer(Answer answer);
 	
-	Integer updateAnswer(Answer answer);
+	Answer updateAnswer(Answer answer);
 	
 	void deleteAnswer(int id);
 }

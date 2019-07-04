@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 @Entity
@@ -15,6 +16,7 @@ public class Question {
 	@NotEmpty
 	private String heading;
 	@NotEmpty @Lob
+	@Size(min = 5, max = 1000)
 	private String questionContent;
     private Date dateCreated;
     

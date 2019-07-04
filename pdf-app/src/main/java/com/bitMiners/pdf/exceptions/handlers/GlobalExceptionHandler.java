@@ -2,6 +2,7 @@ package com.bitMiners.pdf.exceptions.handlers;
 
 import com.bitMiners.pdf.domain.interfaces.ErrorResponse;
 import com.bitMiners.pdf.exceptions.DataException;
+import com.bitMiners.pdf.exceptions.PdfApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,5 +17,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<ErrorResponse> handleDataException(DataException exception) {
 	    final ErrorResponse errorResponse = new ErrorResponse(400, exception.getMessage());
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(PdfApiException.class)
+	public ResponseEntity<ErrorResponse> handlePdfApiException(PdfApiException exception) {
+		final ErrorResponse errorResponse = new ErrorResponse(exception.getCode(), exception.getMessage());
+		return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(exception.getCode()));
 	}
 }

@@ -1,6 +1,7 @@
 package com.bitMiners.pdf.repositories.impl;
 
 import com.bitMiners.pdf.domain.Question;
+import com.bitMiners.pdf.exceptions.PdfApiException;
 import com.bitMiners.pdf.repositories.QuestionRepository;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -24,15 +25,21 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     public void delete(Integer id) {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from Question q where q.id=:id");
         query.setParameter("id", id);
-        query.executeUpdate();
+        int result = query.executeUpdate();
+        if (result < 1) {
+            throw new PdfApiException("Error while deleting question with id: " + id, 500);
+        }
     }
 
-    public boolean update(Question question) {
+    public Question update(Question question) {
         Query query = sessionFactory.getCurrentSession().createQuery("update Question q set q.questionContent=:content where q.id=:id");
         query.setParameter("content", question.getQuestionContent());
         query.setParameter("id", question.getId());
-        query.executeUpdate();
-        return true;
+        int result = query.executeUpdate();
+        if (result < 1) {
+            throw new PdfApiException("Error while updating question with id: " + question.getId(), 500);
+        }
+        return question;
     }
 
     public Question findOne(Integer id) {
