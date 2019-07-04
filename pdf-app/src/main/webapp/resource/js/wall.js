@@ -24,21 +24,24 @@ $(function () {
 
     $(document).on('click', '.deleteimage', function () {
         var questionId = this.id;
-        $("#dialog-confirm").dialog({
+        $("#dialog-delete-question").dialog({
             resizable: false,
             height: 200,
             modal: true,
             buttons: {
                 "Delete": function () {
+                    console.log("making delete requests....");
                     $.ajax({
-                        url: "questions/delete/" + questionId,
-                        type: 'GET',
-                        dataType: "json",
+                        url: "questions/" + questionId,
+                        type: 'DELETE',
+                        contentType: "application/json;charset=utf-8",
                         success: function (output) {
-                            if (output == 1) {
-                                $("#dialog-confirm").dialog("close");
-                                $("#main-todo-content-" + questionId).parent().remove();
-                            }
+                            $("#dialog-delete-question").dialog("close");
+                            $("#main-todo-content-" + questionId).parent().remove();
+                        },
+                        error: function (response) {
+                            console.log(response);
+                            $("dialog-delete-question-message").text('Error while deleting the Question!');
                         }
                     });
 
@@ -54,7 +57,7 @@ $(function () {
     $(document).on('click', '.update-question', function () {
         var questionId = this.id;
         $('#question').val($("#question-" + questionId).text().trim());
-           // alert(questionId);
+        $('#heading').val($("#heading-" + questionId).text().trim());
         $("#dialog-update-question").dialog({
 //            autoOpen: false,
             height: 300,
@@ -62,20 +65,17 @@ $(function () {
             modal: true,
             buttons: {
                 'OK': function () {
-//                	alert(questionId);
                     var questionText = $('#question').val();
-//                    alert(questionText);
+                    var heading = $('#heading').val();
                     $.ajax({
-                        url: "questions/edit/" + questionId,
-                        data: JSON.stringify({'questionContent': questionText/*,'id':questionId*/}),
-                        type: 'post',
+                        url: "questions/" + questionId,
+                        data: JSON.stringify({'questionContent': questionText,'id': questionId, 'heading': heading}),
+                        type: 'PUT',
                         dataType: "json",
                         contentType: "application/json;charset=utf-8",
                         success: function (output) {
-                            if (output == 1) {
-                                $("#dialog-update-question").dialog("close");
-                                $("#question-" + questionId).text(questionText);
-                            }
+                            $("#dialog-update-question").dialog("close");
+                            $("#question-" + questionId).text(output.questionContent);
                         }
                     });
                 },

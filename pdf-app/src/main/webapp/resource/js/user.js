@@ -1,7 +1,7 @@
 $(function () {
     $(document).on('click','.user-details',function(){
         var userId = this.id;
-            $.ajax({ url: "user/"+userId,
+            $.ajax({ url: "/users/" + userId + "/profile",
                 type: 'GET',
                 dataType : 'json',
                 contentType: "application/json;charset=utf-8",

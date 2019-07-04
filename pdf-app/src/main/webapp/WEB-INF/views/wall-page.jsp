@@ -46,7 +46,7 @@
                                         date="${question.dateCreated}"></g:dateFromNow></span>
                                 </div>
                                 <div>
-                                    <div id="heading">
+                                    <div id="heading-${question.id}">
                                         <h4>${question.heading}</h4>
                                     </div>
                                     <div id="question-${question.id}">
@@ -111,11 +111,11 @@
 
     </div>
 </div>
-<div id="dialog-confirm" title="Delete Question?" style="display: none">
+<div id="dialog-delete-question" title="Delete Question?" style="display: none">
     <p>
 		<span class="ui-icon ui-icon-alert"
-              style="float: left; margin: 0 7px 20px 0;"></span>Do you want to
-        delete this Question?
+              style="float: left; margin: 0 7px 20px 0;"></span>
+        <span id="dialog-delete-question-message">Do you want to delete this Question?</span>
     </p>
 </div>
 
@@ -125,6 +125,7 @@
 		<textarea name="question" id="question"
                   class="text ui-widget-content ui-corner-all">
         </textarea>
+        <input type="hidden" id="heading"></input>
     </form>
 </div>
 
