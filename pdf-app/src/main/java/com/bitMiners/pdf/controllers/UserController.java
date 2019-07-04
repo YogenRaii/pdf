@@ -6,6 +6,8 @@ import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.domain.types.AuthorityType;
 import com.bitMiners.pdf.services.ProfileService;
 import com.bitMiners.pdf.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import java.util.Set;
 @Controller
 @RequestMapping("/users")
 public class UserController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
 
@@ -87,8 +91,9 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Profile getUserProfile(@PathVariable("id") int id) {
-        return profileService.getProfile(id);
+    @RequestMapping(value = "/{userId}/profile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Profile getUserProfile(@PathVariable("userId") int userId) {
+        LOGGER.info("getUserProfile(): userId -> {}", userId);
+        return userService.getProfileByUserId(userId);
     }
 }

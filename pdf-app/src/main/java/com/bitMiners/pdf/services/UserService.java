@@ -1,5 +1,6 @@
 package com.bitMiners.pdf.services;
 
+import com.bitMiners.pdf.domain.Profile;
 import com.bitMiners.pdf.domain.User;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface UserService {
     User getUserById(int id);
 
     List<User> getAllAdmins();
+
+    Profile getProfileByUserId(int userId);
 }

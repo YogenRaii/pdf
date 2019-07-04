@@ -7,7 +7,7 @@ public interface CrudRepository<T, ID> {
 
     void delete(ID id);
 
-    boolean update(T t);
+    T update(T t);
 
     T findOne(ID id);
 

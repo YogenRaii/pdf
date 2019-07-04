@@ -1,6 +1,7 @@
 package com.bitMiners.pdf.services.impl;
 
 import com.bitMiners.pdf.domain.Question;
+import com.bitMiners.pdf.exceptions.PdfApiException;
 import com.bitMiners.pdf.repositories.QuestionRepository;
 import com.bitMiners.pdf.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,23 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     public Question getQuestionById(int id) {
-        return questionRepository.findOne(id);
+        Question question = questionRepository.findOne(id);
+        if (question == null) {
+            throw new PdfApiException("No question found with id: " + id, 404);
+        }
+        return question;
     }
 
     public void deleteQuestionById(int id) {
+        Question question = questionRepository.findOne(id);
+        if (question == null) {
+            throw new PdfApiException("No question found with id: " + id, 404);
+        }
         questionRepository.delete(id);
 
     }
 
-    public void updateQuestion(Question question) {
-        questionRepository.update(question);
+    public Question updateQuestion(Question question) {
+        return questionRepository.update(question);
     }
 }

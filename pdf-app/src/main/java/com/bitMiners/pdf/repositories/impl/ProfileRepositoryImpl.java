@@ -24,10 +24,10 @@ public class ProfileRepositoryImpl implements ProfileRepository {
 
     }
 
-    public boolean update(Profile profile) {
+    public Profile update(Profile profile) {
         sessionFactory.getCurrentSession().merge(profile);
         sessionFactory.getCurrentSession().flush();
-        return true;
+        return profile;
     }
 
     public Profile findOne(Integer id) {

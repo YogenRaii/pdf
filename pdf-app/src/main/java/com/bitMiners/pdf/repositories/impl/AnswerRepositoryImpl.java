@@ -1,6 +1,7 @@
 package com.bitMiners.pdf.repositories.impl;
 
 import com.bitMiners.pdf.domain.Answer;
+import com.bitMiners.pdf.exceptions.PdfApiException;
 import com.bitMiners.pdf.repositories.AnswerRepository;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -27,12 +28,15 @@ public class AnswerRepositoryImpl implements AnswerRepository {
         query.executeUpdate();
     }
 
-    public boolean update(Answer answer) {
+    public Answer update(Answer answer) {
         Query query = sessionFactory.getCurrentSession().createQuery("update Answer a set a.answerContent=:content where a.id=:id");
         query.setParameter("content", answer.getAnswerContent());
         query.setParameter("id", answer.getId());
-        query.executeUpdate();
-        return true;
+        int result = query.executeUpdate();
+        if (result < 1) {
+            throw new PdfApiException("Error while updating answer with id: " + answer.getId(), 500);
+        }
+        return answer;
     }
 
     public Answer findOne(Integer id) {

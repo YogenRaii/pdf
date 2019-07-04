@@ -46,9 +46,9 @@ public class AnswerController {
     }
 
     @RequestMapping(value = "/edit/{answerId}", method = RequestMethod.POST)
-    public @ResponseBody Integer updateAnswer(@Valid @RequestBody Answer answer, BindingResult result, @PathVariable("answerId") int id) {
+    public @ResponseBody Answer updateAnswer(@Valid @RequestBody Answer answer, BindingResult result, @PathVariable("answerId") int id) {
         if (result.hasErrors()) {
-            throw new DataException("Invalid payload", result);
+            throw new DataException("Invalid payload", result.getFieldErrors());
         }
         answer.setId(id);
         return answerService.updateAnswer(answer);

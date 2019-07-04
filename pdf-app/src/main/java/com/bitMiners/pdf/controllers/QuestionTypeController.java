@@ -44,7 +44,7 @@ public class QuestionTypeController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PATCH)
-    public @ResponseBody Long editQuestionType(@RequestBody QuestionType questionType, @PathVariable("id") Long id) {
+    public @ResponseBody QuestionType editQuestionType(@RequestBody QuestionType questionType, @PathVariable("id") Long id) {
         questionType.setId(id);
         return questionTypeService.updateQuestionType(questionType);
     }

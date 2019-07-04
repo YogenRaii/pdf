@@ -18,8 +18,8 @@ public class QuestionTypeServiceImpl implements QuestionTypeService {
         return questionTypeRepository.add(questionType);
     }
 
-    public Long updateQuestionType(QuestionType questionType) {
-        return questionTypeRepository.update(questionType) ? 1L : 0;
+    public QuestionType updateQuestionType(QuestionType questionType) {
+        return questionTypeRepository.update(questionType);
     }
 
     public void deleteQuestionType(Long id) {

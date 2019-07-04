@@ -13,7 +13,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    public boolean updateProfile(Profile profile) {
+    public Profile updateProfile(Profile profile) {
         return profileRepository.update(profile);
     }
 

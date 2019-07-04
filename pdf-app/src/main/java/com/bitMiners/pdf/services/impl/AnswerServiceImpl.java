@@ -17,11 +17,11 @@ public class AnswerServiceImpl implements AnswerService {
         return answerRepository.add(answer);
     }
 
-    public Integer updateAnswer(Answer answer) {
+    public Answer updateAnswer(Answer answer) {
         if (answerRepository.findOne(answer.getId()) == null) {
             throw new DataException("Invalid answer id : " + answer.getId(), null);
         }
-        return (answerRepository.update(answer)) ? 1 : 0;
+        return answerRepository.update(answer);
     }
 
     public void deleteAnswer(int id) {

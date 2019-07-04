@@ -1,6 +1,7 @@
 package com.bitMiners.pdf.repositories.impl;
 
 import com.bitMiners.pdf.domain.QuestionType;
+import com.bitMiners.pdf.exceptions.PdfApiException;
 import com.bitMiners.pdf.repositories.QuestionTypeRepository;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -27,12 +28,15 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
         query.executeUpdate();
     }
 
-    public boolean update(QuestionType questionType) {
+    public QuestionType update(QuestionType questionType) {
         Query query = sessionFactory.getCurrentSession().createQuery("update QuestionType q set q.description=:content where q.id=:id");
         query.setParameter("content", questionType.getDescription());
         query.setParameter("id", questionType.getId());
-        query.executeUpdate();
-        return true;
+        int result = query.executeUpdate();
+        if (result < 1) {
+            throw new PdfApiException("Error while updating question type with id: " + questionType.getId(), 500);
+        }
+        return questionType;
     }
 
     public QuestionType findOne(Long id) {
