@@ -25,7 +25,10 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
     public void delete(Long id) {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from QuestionType q where q.id=:id");
         query.setParameter("id", id);
-        query.executeUpdate();
+        int result = query.executeUpdate();
+        if (result < 1) {
+            throw new PdfApiException("Error while updating question type with id: " + id, 500);
+        }
     }
 
     public QuestionType update(QuestionType questionType) {
@@ -40,8 +43,7 @@ public class QuestionTypeRepositoryImpl implements QuestionTypeRepository {
     }
 
     public QuestionType findOne(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return sessionFactory.getCurrentSession().get(QuestionType.class, id);
     }
 
     public List<QuestionType> findAll() {

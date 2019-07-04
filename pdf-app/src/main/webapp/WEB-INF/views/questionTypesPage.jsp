@@ -38,7 +38,7 @@
 						<img src="<c:url value="/resource/images/todo.png" />">
 					</div>
 					<div class="questionType-text-main">
-						<div id="heading">
+						<div id="questionType-heading-${questionType.id}">
 							<h4>${questionType.name}</h4>
 						</div>
 						<div class="questionType-text"
@@ -59,20 +59,20 @@
 	</div>
 </div>
 
-<div id="dialog-confirm" title="Delete Question Type?" style="display: none">
+<div id="dialog-delete-confirm" title="Delete Question Type?" style="display: none">
 	<p>
 		<span class="ui-icon ui-icon-alert"
-			style="float: left; margin: 0 7px 20px 0;"></span>Do you want to
-		delete this Question Type?
+			style="float: left; margin: 0 7px 20px 0;"></span>
+		<span id="dialog-delete-confirm-message">Do you want to delete this Question Type?</span>
 	</p>
 </div>
 
 <div id="dialog-update-questionType" title="Update Question Type"
 	style="display: none">
 	<form>
-		<textarea name="questionType" id="questionType"
-			class="text ui-widget-content ui-corner-all">
-        </textarea>
+          <textarea name="questionType-content" id="questionType-content" class="text ui-widget-content ui-corner-all">
+          </textarea>
+	      <input id="questionType-heading" type="hidden">
 	</form>
 </div>
 

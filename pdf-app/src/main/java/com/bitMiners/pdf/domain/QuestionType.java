@@ -1,6 +1,7 @@
 package com.bitMiners.pdf.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -11,8 +12,10 @@ public class QuestionType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotEmpty
+	@Size(min = 1, max = 40)
 	private String name;
 	@NotEmpty @Lob
+	@Size(min = 3, max = 500)
 	private String description;
 	
 	public QuestionType(){}
