@@ -25,7 +25,10 @@ public class AnswerRepositoryImpl implements AnswerRepository {
     public void delete(Integer id) {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from Answer a where a.id=:id");
         query.setParameter("id", id);
-        query.executeUpdate();
+        int result = query.executeUpdate();
+        if (result < 1) {
+            throw new PdfApiException("Error while deleting answer with id: " + id, 500);
+        }
     }
 
     public Answer update(Answer answer) {
@@ -40,8 +43,7 @@ public class AnswerRepositoryImpl implements AnswerRepository {
     }
 
     public Answer findOne(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
+        return sessionFactory.getCurrentSession().get(Answer.class, id);
     }
 
     public List<Answer> findAll() {

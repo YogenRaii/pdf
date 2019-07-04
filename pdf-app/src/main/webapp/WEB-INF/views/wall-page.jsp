@@ -11,7 +11,8 @@
 <script src="<spring:url value="/resource/js/wall.js" />" type="text/javascript"></script>
 
 <div>
-
+    <input type="hidden" id="current_user_id" value="${ currentUserId }">
+    <input type="hidden" id="current_username" value="${ currentUser }">
     <div class="panel-body">
         <div class="row">
             <%-- <div class="row welcome">
@@ -24,8 +25,8 @@
                         <div id="main-todo-content-${question.id}">
                             <div class="todoheader">
                                 <input type="hidden" id="user_id" value="${	question.user.id }">
-                                <input type="hidden" id="username"
-                                       value="${question.user.username }">
+                                <input type="hidden" id="username" value="${question.user.username }">
+                                <input type="hidden" id="current_question_id" value="${question.id}">
 
                                 <!-- check if question belongs to current user -->
                                 <c:if test="${question.user.id eq currentUserId }">

@@ -1,17 +1,16 @@
 $(function () {
 
-    var userId = $("#user_id").val();
-    var username = $("#username").val();
+    var userId = $("#current_user_id").val();
+    var username = $("#current_username").val();
 
     $(document).on('click', '.comment-btn', function () {
         var questionId = this.id;
         if ($("#comment-textarea-" + questionId + " textarea").val() != '') {
             var comment = $("#comment-textarea-" + questionId + " textarea").val();
             $.ajax({
-                url: "answers/add/" + questionId + "/" + userId,
+                url: "/users/" + userId + "/questions/" + questionId + "/answers",
                 data: JSON.stringify({'answerContent': comment}),
                 type: 'POST',
-                dataType: 'json',
                 contentType: "application/json;charset=utf-8",
                 success: function (output) {
                     createComment(comment, questionId, output);
@@ -90,6 +89,9 @@ $(function () {
 
     $(document).on('click', '.comment-delete-img', function () {
         var commentId = this.id;
+        var userId = $("#current_user_id").val();
+        var username = $("#current_username").val();
+        var questionId = $('#current_question_id').val();
         $("#dialog-confirm-answer").dialog({
             resizable: false,
             height: 200,
@@ -97,14 +99,15 @@ $(function () {
             buttons: {
                 "Delete": function () {
                     $.ajax({
-                        url: 'answers/delete/' + commentId,
-                        type: 'get',
-                        dataType: "json",
+                        url: "/users/" + userId + "/questions/" + questionId + '/answers/' + commentId,
+                        type: 'DELETE',
+                        contentType: "application/json;charset=utf-8",
                         success: function (output) {
-                            if (output == 1) {
-                                $("#dialog-confirm-answer").dialog("close");
-                                $("#delete-comment-" + commentId).remove();
-                            }
+                            $("#dialog-confirm-answer").dialog("close");
+                            $("#delete-comment-" + commentId).remove();
+                        },
+                        error: function (response) {
+                            console.log('Error while deleting answer!', response);
                         }
                     });
 
@@ -117,7 +120,11 @@ $(function () {
     });
 
     $(document).on('click', '.update-comment', function () {
+        var userId = $("#current_user_id").val();
+        var username = $("#current_username").val();
+        var questionId = $('#current_question_id').val();
         var commentId = this.id;
+        console.log('Anser to edit: ' + commentId);
         $('#answer').val($("#comment-text-" + commentId).text().trim());
 
         $("#dialog-update-answer").dialog({
@@ -129,19 +136,16 @@ $(function () {
                 OK: function () {
                     var answerText = $('#answer').val();
                     $.ajax({
-                        url: "answers/edit/" + commentId,
+                        url: "/users/" + userId + "/questions/" + questionId + "/answers/" + commentId,
                         data: JSON.stringify({'answerContent': answerText}),
-                        type: 'post',
-                        dataType: "json",
+                        type: 'PUT',
                         contentType: "application/json;charset=utf-8",
                         success: function (output) {
-                            console.log("..........");
-                            console.log(output);
-                            console.log(output.status);
-                            if (output == 1) {
-                                $("#dialog-update-answer").dialog("close");
-                                $("#comment-text-" + commentId).text(answerText);
-                            }
+                            $("#dialog-update-answer").dialog("close");
+                            $("#comment-text-" + commentId).text(answerText);
+                        },
+                        error: function (response) {
+                            console.log('Error while updating answer!', response);
                         }
                     });
                 },
@@ -167,7 +171,7 @@ $(function () {
             '<div class="comment-delete-img" id="' + commentid + '">' +
             '<img src="resource/images/delete.png">' +
             '</div>' +
-            '<div class="update-question" id="' + commentid + '"><img src="resource/images/edit.png"></div>' +
+            '<div class="update-comment" id="' + commentid + '"><img src="resource/images/edit.png"></div>' +
             '</div>';
         $("#comments-" + itemid).append(comment);
         $("#comment-textarea-" + itemid + " textarea").val('');
