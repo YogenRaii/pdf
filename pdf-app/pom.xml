@@ -12,7 +12,6 @@
 		<jackson.version>2.9.8</jackson.version>
 		<hibernate.version>5.2.17.Final</hibernate.version>
 		<hibernate.validator>5.2.1.Final</hibernate.validator>
-		<spring.data.jpa>2.1.3.Final</spring.data.jpa>
 		<c3p0.version>0.9.5.2</c3p0.version>
 	</properties>
 
@@ -127,11 +126,6 @@
 			<version>${hibernate.validator}</version>
 		</dependency>
 
-<!--		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
-		</dependency>-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

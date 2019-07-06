@@ -1,27 +1,28 @@
 version: "3"
 services:
-  pdf-app:
-    image: pdf-app
+  app:
+    build: .
+    image: app
     ports:
       - "8081:8080"
     networks:
-      - pdf-mysql
+      - net
     depends_on:
       - mysqldb
 
   mysqldb:
     image: mysql:5.7
     networks:
-      - pdf-mysql
+      - net
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=pdf
     volumes:
-      - pdf-db:/var/lib/mysql
+      - mysql-db:/var/lib/mysql
 
 volumes:
-  pdf-db:
+  mysql-db:
 
 networks:
-  pdf-mysql:
+  net:
