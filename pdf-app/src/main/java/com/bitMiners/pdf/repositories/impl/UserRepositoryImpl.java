@@ -50,7 +50,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAllAdmins() {
-        NativeQuery<User> query = sessionFactory.getCurrentSession().createNativeQuery("SELECT * FROM User u where id in (select user_id FROM user_authority where authority_id=(select id FROM authority where name=:role))");
+        NativeQuery<User> query = sessionFactory.getCurrentSession().createNativeQuery("SELECT * FROM user u where id in (select user_id FROM user_authority where authority_id=(select id FROM authority where name=:role))");
         query.setParameter("role", "ROLE_ADMIN");
         query.addEntity(User.class);
         return query.list();

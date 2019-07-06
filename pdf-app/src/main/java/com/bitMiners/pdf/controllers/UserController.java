@@ -4,6 +4,7 @@ import com.bitMiners.pdf.domain.Authority;
 import com.bitMiners.pdf.domain.Profile;
 import com.bitMiners.pdf.domain.User;
 import com.bitMiners.pdf.domain.types.AuthorityType;
+import com.bitMiners.pdf.repositories.AuthorityRepository;
 import com.bitMiners.pdf.services.ProfileService;
 import com.bitMiners.pdf.services.UserService;
 import org.slf4j.Logger;
@@ -31,6 +32,9 @@ public class UserController {
     @Autowired
     private ProfileService profileService;
 
+    @Autowired
+    private AuthorityRepository authorityRepository;
+
     @RequestMapping(value = {"/list", ""})
     public String users(Model model) {
         model.addAttribute("userList", userService.getAllUsers());
@@ -57,7 +61,7 @@ public class UserController {
         user.setDateCreated(new Date());
 
         // set user authorities
-        Set<Authority> authorities = Collections.singleton(new Authority(AuthorityType.ROLE_USER));
+        Set<Authority> authorities = Collections.singleton(this.authorityRepository.findByName(AuthorityType.ROLE_USER));
         user.setAuthorities(authorities);
 
         userService.addUser(user);
@@ -77,7 +81,7 @@ public class UserController {
         user.setDateCreated(new Date());
 
         // set admin authorities
-        Set<Authority> authorities = Collections.singleton(new Authority(AuthorityType.ROLE_ADMIN));
+        Set<Authority> authorities = Collections.singleton(this.authorityRepository.findByName(AuthorityType.ROLE_ADMIN));
         user.setAuthorities(authorities);
 
         userService.addUser(user);
