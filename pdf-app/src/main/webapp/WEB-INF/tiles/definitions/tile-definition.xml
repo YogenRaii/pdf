@@ -69,13 +69,13 @@
 		<put-attribute name="tagline" value="Questions Categories" />
 		<put-attribute name="body" value="/WEB-INF/views/questionTypesForm.jsp" />
 	</definition>
-	<!--
+
 	<definition name="questionDetails" extends="baseLayout">
 		<put-attribute name="title" value="Question Details" />
 		<put-attribute name="tagline" value="Questions Detail" />
 		<put-attribute name="body" value="/WEB-INF/views/questionInDetail.jsp" />
 	</definition>
-	-->
+
 	<definition name="error-forbidden" extends="baseLayout">
 		<put-attribute name="title" value="Question Details" />
 		<put-attribute name="tagline" value="Questions Detail" />
