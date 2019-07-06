@@ -16,7 +16,26 @@ Import project into any of IDE and deploy in any container (Tomcat would be the 
 http://localhost:8080
 ```
 
+### Docker
+You need to have Docker installed to run the latest `master` branch.
+
+Build artifact with Maven as:
+
+```
+mvn clean install
+```
+
+Now, create Docker image, and hence container with Docker Compose as:
+
+```
+docker-compose up --build
+```
+
+This creates container for app and mysql, network bridge to connect these to container!
+
 ### Spring Boot Run
+Need to switch to branch [spring-boot-embedded-container](https://github.com/YogenRaii/pdf/tree/spring-boot-embedded-container) for this feature!
+
 Go to `$PROJECT_DIR/pdf-app` directory and run:
 
 ```
@@ -28,6 +47,8 @@ http://localhost:8080
 ```
 
 ### Vagrant Installation
+Need to switch to branch [spring-5-hibernate-5](https://github.com/YogenRaii/pdf/tree/spring-5-hibernate-5) for this feature!
+
 
 Go to `$PROJECT_DIR/vagrant` directory and install the plugins as defined in `Vagrantfile`.
 

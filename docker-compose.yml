@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-#    build: .
+    build: .
     image: app
     ports:
       - "8081:8080"
@@ -9,8 +9,6 @@ services:
       - net
     depends_on:
       - mysqldb
-    volumes:
-      - ./pdf-app/target/:/usr/local/tomcat/webapps/
 
   mysqldb:
     image: mysql:5.7
