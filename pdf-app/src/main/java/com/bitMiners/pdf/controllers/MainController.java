@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
     @RequestMapping(value = {"/", "", "/welcome"}, method = RequestMethod.GET)
     public String getWelcomePage() {
-        return "/WEB-INF/views/welcome-page.jsp";
+        return "welcome";
     }
 }
