@@ -9,7 +9,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<aspect.version>1.9.2</aspect.version>
-		<jackson.version>2.9.8</jackson.version>
+		<jackson.version>2.9.10.8</jackson.version>
 		<hibernate.version>5.2.17.Final</hibernate.version>
 		<hibernate.validator>5.2.1.Final</hibernate.validator>
 		<c3p0.version>0.9.5.2</c3p0.version>
